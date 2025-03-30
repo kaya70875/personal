@@ -1,3 +1,5 @@
+'use client';
+
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
 import articlewImg from "../../public/images/articlew.png";
@@ -9,6 +11,8 @@ import IconGithub from "@/svg/IconGithub";
 import IconIn from "@/svg/IconIn";
 import IconArrow from "@/svg/IconArrow";
 import Link from "next/link";
+import { Typewriter } from "@/components/motion/Typewriter";
+import { motion } from 'motion/react';
 
 export default function Home() {
 
@@ -52,13 +56,14 @@ export default function Home() {
           <Image src={myImage} alt="profile-img" width={164} height={164} />
         </header>
         <h1 className="max-w-2xl">Hi, I am <span className="text-accent">Ahmet. </span>I build things for the web.</h1>
+        <Typewriter text="Full-Stack Developer | React | Next.js | FastAPI" />
         <h3 className="max-w-3xl 2xl:max-w-4xl">I turn ideas into code and write about my journey as a developer. Let’s build something cool!</h3>
         <div className="flex items-center gap-16 justify-center w-full">
           <Button>View My Work</Button>
           <Button variant="secondary">See My Blog</Button>
         </div>
 
-        <div className="socials text-text flex items-center gap-8 mt-12 justify-center w-full">
+        <div className="socials text-text flex items-center gap-8 mt-4 justify-center w-full">
           <Link href={'https://github.com/kaya70875'} target="__blank" className="transition-all duration-200 ease-in hover:text-accent">
             <IconGithub />
           </Link>
@@ -73,11 +78,11 @@ export default function Home() {
       </section>
       <section className="projects flex flex-col gap-8">
         <header className="section-header">Projects</header>
-        <div className="project-cards grid grid-cols-2 justify-items-center gap-12">
+        <motion.div className="project-cards grid grid-cols-2 justify-items-center gap-12" initial={{ transform: "translateY(100px)" }} viewport={{ once: true, amount: 0.1 }} whileInView={{ transform: "translateY(0px)" }} transition={{ type: 'spring' }}>
           {PROJECTS.map((project, index) => (
             <ProjectCard link={project.link} borderVariant={project.border ?? 'default'} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
           ))}
-        </div>
+        </motion.div>
       </section>
     </main>
   )
