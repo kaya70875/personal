@@ -17,14 +17,22 @@ export default function Home() {
       desc: 'articlew is a unique educational app designed to enhance your English learning and writing skills. With this app, users can input a word and receive example sentences, definitions, and contextual usages from a variety of topics and articles.',
       image: articlewImg,
       border: 'primary',
+      link: {
+        live: 'https://learn-with-articles-next.vercel.app/search',
+        github: 'https://github.com/kaya70875/articlew'
+      }
     },
     {
       name: 'finance',
       desc: 'Finance is an challange from FrontEnd Mentors. Desing is quite challenging and taught me a lot about flexbox and css in general. This project mostly challanged me with CSS and UI/UX.',
       image: financeImg,
       border: 'default',
+      link: {
+        live: 'https://personel-finance-app-next.vercel.app/login',
+        github: 'https://github.com/kaya70875/personel-finance-app-next'
+      }
     }
-  ]
+  ] as const;
 
   return (
     <main className="flex flex-col sections-gap">
@@ -39,7 +47,7 @@ export default function Home() {
           <Button variant="secondary">See My Blog</Button>
         </div>
 
-        <div className="socials cursor-pointer text-text flex items-center gap-8 mt-12 justify-center w-full">
+        <div className="socials text-text flex items-center gap-8 mt-12 justify-center w-full">
           <Link href={'https://github.com/kaya70875'} target="__blank" className="transition-all duration-200 ease-in hover:text-accent">
             <IconGithub />
           </Link>
@@ -54,9 +62,9 @@ export default function Home() {
       </section>
       <section className="projects flex flex-col gap-8">
         <header className="section-header">Projects</header>
-        <div className="project-cards flex items-center justify-between gap-12">
+        <div className="project-cards flex items-center justify-around gap-12">
           {PROJECTS.map((project, index) => (
-            <ProjectCard borderVariant={project.border ?? 'default'} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
+            <ProjectCard link={project.link} borderVariant={project.border ?? 'default'} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
           ))}
         </div>
       </section>

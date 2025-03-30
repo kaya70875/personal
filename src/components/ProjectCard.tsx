@@ -1,6 +1,12 @@
 import Image, { StaticImageData } from 'next/image';
 import React from 'react'
 import Button from './Button';
+import Link from 'next/link';
+
+interface Link {
+    live: string;
+    github: string;
+}
 
 interface ProjectCardProps {
     name: string;
@@ -11,9 +17,10 @@ interface ProjectCardProps {
     };
     desc: string;
     borderVariant?: 'primary' | 'default';
+    link: Link;
 }
 
-export default function ProjectCard({ name, image, desc, borderVariant = 'default' }: ProjectCardProps) {
+export default function ProjectCard({ name, image, desc, borderVariant = 'default', link }: ProjectCardProps) {
 
     const borderVariants = {
         primary: 'border-accent',
@@ -27,8 +34,12 @@ export default function ProjectCard({ name, image, desc, borderVariant = 'defaul
             <p className='text-text opacity-90 font-light'>{desc}</p>
 
             <div className="flex items-center gap-16 justify-center w-full">
-                <Button>View Live</Button>
-                <Button variant="secondary">Github</Button>
+                <Link href={link.live} target='__blank'>
+                    <Button>View Live</Button>
+                </Link>
+                <Link href={link.github} target='__blank'>
+                    <Button variant="secondary">Github</Button>
+                </Link>
             </div>
         </div>
     )
