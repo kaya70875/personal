@@ -8,11 +8,11 @@ interface ButtonProps {
 
 export default function Button({ variant = 'primary', children, onClick }: ButtonProps) {
 
-    const baseStyles = 'px-4 py-4 rounded-lg cursor-pointer font-[600] w-48'
+    const baseStyles = 'px-4 py-4 rounded-lg cursor-pointer font-[600] w-48 transition duration-300 ease-in-out';
 
     const variants = {
-        primary: 'bg-accent text-text',
-        secondary: 'bg-text text-white'
+        primary: 'bg-accent text-text hover:opacity-80',
+        secondary: 'bg-text text-white hover:opacity-80',
     }
 
     return (
