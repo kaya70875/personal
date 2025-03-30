@@ -33,4 +33,16 @@ h3 {
   .default-container {
     @apply px-4 lg:px-[120px] xl:px-[200px] 2xl:px-[250px] py-4
   }
+
+  .sections-gap {
+    gap: 6rem;
+  }
+}
+
+@layer utilities {
+  .section-header {
+    color: var(--color-text);
+    font-size: 2rem;
+    font-weight: bold;
+  }
 }
