@@ -28,9 +28,9 @@ export default function ProjectCard({ name, image, desc, borderVariant = 'defaul
     }
 
     return (
-        <div className={`border-4 rounded-lg ${borderVariants[borderVariant]} p-8 flex flex-col justify-between items-center gap-8 max-w-lg`}>
+        <div className={`border-4 rounded-lg ${borderVariants[borderVariant]} p-8 flex flex-col justify-between items-center gap-8 max-w-lg min-h-[580px]`}>
             <header className='font-bold text-2xl text-text'>{name}</header>
-            <Image src={image.src} width={image.width ?? 500} height={image.height ?? 500} alt='project' />
+            <Image className='rounded-lg' src={image.src} width={image.width ?? 500} height={image.height ?? 500} alt='project' />
             <p className='text-text opacity-90 font-light'>{desc}</p>
 
             <div className="flex items-center gap-16 justify-center w-full">
