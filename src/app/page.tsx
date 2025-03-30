@@ -13,6 +13,7 @@ import IconArrow from "@/svg/IconArrow";
 import Link from "next/link";
 import { Typewriter } from "@/components/motion/Typewriter";
 import { motion } from 'motion/react';
+import AnimatedBorderCard from "@/components/motion/AnimatedBorderCard";
 
 export default function Home() {
 
@@ -21,7 +22,7 @@ export default function Home() {
       name: 'articlew',
       desc: 'articlew is a unique educational app designed to enhance your English learning and writing skills. With this app, users can input a word and receive example sentences, definitions, and contextual usages from a variety of topics and articles.',
       image: articlewImg,
-      border: 'primary',
+      prime: true,
       link: {
         live: 'https://learn-with-articles-next.vercel.app/search',
         github: 'https://github.com/kaya70875/articlew'
@@ -31,7 +32,7 @@ export default function Home() {
       name: 'finance',
       desc: 'Finance is an challange from FrontEnd Mentors. Desing is quite challenging and taught me a lot about flexbox and css in general. This project mostly challanged me with CSS and UI/UX.',
       image: financeImg,
-      border: 'default',
+      prime: false,
       link: {
         live: 'https://personel-finance-app-next.vercel.app/login',
         github: 'https://github.com/kaya70875/personel-finance-app-next'
@@ -41,7 +42,7 @@ export default function Home() {
       name: 'note',
       desc: 'Note is a clean and simple app for taking notes. This project taught me a lot of advance Next JS features. This app also highly customizable with a lot of features.',
       image: noteImg,
-      border: 'default',
+      prime: false,
       link: {
         live: 'https://note-taking-app-next-beta.vercel.app/',
         github: 'https://github.com/kaya70875/note-taking-app-next'
@@ -80,7 +81,9 @@ export default function Home() {
         <header className="section-header">Projects</header>
         <motion.div className="project-cards grid grid-cols-2 justify-items-center gap-12" initial={{ transform: "translateY(100px)" }} viewport={{ once: true, amount: 0.1 }} whileInView={{ transform: "translateY(0px)" }} transition={{ type: 'spring' }}>
           {PROJECTS.map((project, index) => (
-            <ProjectCard link={project.link} borderVariant={project.border ?? 'default'} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
+            <AnimatedBorderCard key={index} prime={project.prime}>
+              <ProjectCard link={project.link} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
+            </AnimatedBorderCard>
           ))}
         </motion.div>
       </section>
