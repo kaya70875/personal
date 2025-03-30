@@ -3,6 +3,7 @@ import ProjectCard from "@/components/ProjectCard";
 import articlewImg from "../../public/images/articlew.png";
 import financeImg from '../../public/images/finance.png';
 import myImage from '../../public/images/headshot.png';
+import noteImg from '../../public/images/note.png';
 import Image from "next/image";
 import IconGithub from "@/svg/IconGithub";
 import IconIn from "@/svg/IconIn";
@@ -30,6 +31,16 @@ export default function Home() {
       link: {
         live: 'https://personel-finance-app-next.vercel.app/login',
         github: 'https://github.com/kaya70875/personel-finance-app-next'
+      }
+    },
+    {
+      name: 'note',
+      desc: 'Note is a clean and simple app for taking notes. This project taught me a lot of advance Next JS features. This app also highly customizable with a lot of features.',
+      image: noteImg,
+      border: 'default',
+      link: {
+        live: 'https://note-taking-app-next-beta.vercel.app/',
+        github: 'https://github.com/kaya70875/note-taking-app-next'
       }
     }
   ] as const;
@@ -62,7 +73,7 @@ export default function Home() {
       </section>
       <section className="projects flex flex-col gap-8">
         <header className="section-header">Projects</header>
-        <div className="project-cards flex items-center justify-around gap-12">
+        <div className="project-cards grid grid-cols-2 justify-items-center gap-12">
           {PROJECTS.map((project, index) => (
             <ProjectCard link={project.link} borderVariant={project.border ?? 'default'} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
           ))}
