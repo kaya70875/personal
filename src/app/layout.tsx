@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "../components/Navbar";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "500"
+})
 
 export const metadata: Metadata = {
   title: "kaya",
@@ -14,9 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`antialiased`}
+        className={`${poppins.className} antialiased`}
       >
-        {children}
+        <div className="bg-bg flex flex-col min-h-screen default-container relative">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );
