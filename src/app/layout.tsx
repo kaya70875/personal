@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={`${poppins.className} antialiased`}
       >
-        <div className="bg-bg flex flex-col min-h-screen default-container relative">
+        <div className="bg-bg flex flex-col sections-gap min-h-screen default-container relative">
           <Navbar />
           {children}
         </div>
