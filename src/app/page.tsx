@@ -14,6 +14,8 @@ import Link from "next/link";
 import { Typewriter } from "@/components/motion/Typewriter";
 import { motion } from 'motion/react';
 import AnimatedBorderCard from "@/components/motion/AnimatedBorderCard";
+import SkillButton from "@/components/SkillButton";
+import { SKILLS } from "@/data/skills";
 
 export default function Home() {
 
@@ -51,7 +53,7 @@ export default function Home() {
   ] as const;
 
   return (
-    <main className="flex flex-col sections-gap">
+    <main className="flex flex-col sections-gap mx-24">
       <section className="hero flex flex-col gap-8 items-center justify-center text-center relative">
         <header>
           <Image src={myImage} alt="profile-img" width={164} height={164} />
@@ -86,6 +88,22 @@ export default function Home() {
             </AnimatedBorderCard>
           ))}
         </motion.div>
+      </section>
+
+      <section className="skills flex flex-col gap-8">
+        <header className="section-header">Skills</header>
+        <div className="skill-buttons grid grid-cols-4 gap-4">
+          {SKILLS.map((skill, index) => (
+            <SkillButton name={skill.name} icon={skill.icon} key={index} />
+          ))}
+        </div>
+      </section>
+
+      <section className="about">
+        <header className="section-header">About Me</header>
+        <div className="p-4 w-full flex items-center justify-center shadow-lg">
+          <p className="text-text">Hey there! I’m Ahmet, a developer who loves turning ideas into reality through code. Whether it’s building sleek UIs, optimizing performance, or learning new tech, I’m always up for a challenge. I also write about my experiences in web development—sharing insights, mistakes, and cool things I learn along the way!</p>
+        </div>
       </section>
     </main>
   )
