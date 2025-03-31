@@ -2,27 +2,26 @@ import IconMoon from '@/svg/IconMoon'
 import React from 'react'
 import NavLink from './NavLink';
 
+export const navLinks = [
+    {
+        name: 'Home',
+        url: '/'
+    },
+    {
+        name: 'Resume',
+        url: '/resume'
+    },
+    {
+        name: 'Blog',
+        url: '/blog'
+    },
+    {
+        name: 'Contact',
+        url: '/contact'
+    },
+] as const;
+
 export default function Navbar() {
-
-    const navLinks = [
-        {
-            name: 'Home',
-            url: '/'
-        },
-        {
-            name: 'Resume',
-            url: '/resume'
-        },
-        {
-            name: 'Blog',
-            url: '/blog'
-        },
-        {
-            name: 'Contact',
-            url: '/contact'
-        },
-    ] as const;
-
     return (
         <nav className='flex w-full items-center p-4 justify-between'>
             <header>

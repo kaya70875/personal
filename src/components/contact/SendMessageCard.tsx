@@ -6,11 +6,11 @@ export default function SendMessageCard() {
         <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full'>
             <h3>Send me a message</h3>
             <div className='flex items-center gap-4 w-full'>
-                <InputField label='Name' />
-                <InputField label='Email' />
+                <InputField label='Name' placeholder='Your Name' />
+                <InputField label='Email' placeholder='Your Email' />
             </div>
 
-            <InputField label='Subject' className='w-full' />
+            <InputField label='Subject' className='w-full' placeholder='Please provide a subject' />
 
             <div className='flex flex-col gap-2 w-full'>
                 <label htmlFor="message">Message</label>
