@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import { motion, useTime, useTransform } from 'framer-motion';
 
@@ -13,7 +15,7 @@ export default function AnimatedBorderCard({ prime = false, children }: Animated
     clamp: false,
   })
   const rotatingBg = useTransform(rotate, (r) => {
-    return `conic-gradient(from ${r}deg, #FACC15 0%, #96a607 50%, #e6ff05 100%)`;
+    return `conic-gradient(from ${r}deg, #FACC15 0%, #ffdd00 50%, #bfff00 75%, #e6ff05 100%)`;
   })
 
   return (
