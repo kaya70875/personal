@@ -45,4 +45,10 @@ h3 {
     font-size: 2rem;
     font-weight: bold;
   }
+
+  .line {
+    background-color: var(--color-text);
+    height: 1px;
+    opacity: 0.8;
+  }
 }
