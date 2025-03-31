@@ -24,7 +24,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ name, image, desc, link }: ProjectCardProps) {
     return (
         <div className="flex flex-col justify-between items-center gap-8">
-            <header className='font-bold text-2xl text-text'>{name}</header>
+            <header className='font-bold text-2xl text-text uppercase'>{name}</header>
             <Image className='rounded-lg' src={image.src} width={image.width ?? 500} height={image.height ?? 500} alt='project' />
             <p className='text-text opacity-90 font-light'>{desc}</p>
 
