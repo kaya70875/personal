@@ -18,7 +18,7 @@ export default function SkillButton({ name, icon }: SkillButtonProps) {
             onHoverEnd={() => setBorderSize(0)}
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.25 }}
-            className='flex flex-col items-center justify-center gap-2 cursor-pointer p-3 bg-bg shadow-lg w-48 rounded-lg text-text font-medium'>
+            className='flex flex-col items-center justify-center gap-2 cursor-pointer p-3 bg-bg shadow-lg rounded-lg text-text font-medium'>
             <div className='flex items-center gap-2'>
                 <div className="icon">
                     <Image src={icon} alt='sk' />
