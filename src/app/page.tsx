@@ -93,9 +93,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about">
+      <section className="about flex flex-col gap-8">
         <header className="section-header">About Me</header>
-        <div className="p-6 w-full flex flex-col gap-8 shadow-lg rounded-lg text-text tracking-wider">
+        <div className="p-8 w-full flex flex-col gap-8 shadow-lg rounded-lg bg-white text-text opacity-90 tracking-wider leading-loose">
           <p>Hey there! I’m Ahmet, a developer passionate about transforming ideas into reality through code. Whether it’s building sleek UIs, optimizing performance, or diving into new technologies, I’m always up for a challenge.</p>
           <p>I began my coding journey at 15 with C++, where I built basic projects and learned the fundamentals of programming. My drive to create led me to explore C#, and I developed simple apps and algorithms that taught me how to solve real-world problems.</p>
           <p>My curiosity then turned toward web technologies and data scraping, which led me to Python. I became proficient with packages like Selenium, BeautifulSoup, and Requests, and I thoroughly enjoyed creating web scraping projects and automation bots. I’ve also ventured into data analysis and algorithmic trading using Python. Eventually, I discovered web development and fell in love with the blend of visually appealing design and problem-solving through code—this is the field where I choose to build my career.</p>
@@ -104,9 +104,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contact">
+      <section className="contact flex flex-col gap-8">
         <header className="section-header">Contact</header>
-        <div className="flex w-full flex-col lg:flex-row lg:flex-1 gap-8">
+        <div className="flex w-full flex-col lg:flex-row lg:flex-1 gap-8 bg-white">
           <ContactInfoCard />
           <SendMessageCard />
         </div>
