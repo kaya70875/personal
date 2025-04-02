@@ -1,13 +1,32 @@
 import React from 'react'
 import { MdEmail, MdLocationOn } from 'react-icons/md'
-import { navLinks } from './Navbar'
 import NavLink from './NavLink'
 import Socials from './Socials'
 
 export default function Footer() {
+
+    const navLinks = [
+        {
+            name: 'Home',
+            url: '/'
+        },
+        {
+            name: 'Resume',
+            url: '/resume'
+        },
+        {
+            name: 'Blog',
+            url: '/blog'
+        },
+        {
+            name: 'Contact',
+            url: '/contact'
+        },
+    ];
+
     return (
-        <footer className='w-full bg-text p-8 flex  flex-col gap-4'>
-            <div className='default-container text-white flex justify-around'>
+        <footer className='w-full bg-text p-2 lg:p-8 flex flex-col gap-4'>
+            <div className='default-container text-white flex justify-center lg:justify-around gap-4 lg:gap-0'>
                 <section className="contact-info flex flex-col gap-8">
                     <p>Contact Info</p>
                     <div className='flex flex-col gap-4'>
