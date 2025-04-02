@@ -5,7 +5,7 @@ export default function SendMessageCard() {
     return (
         <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full'>
             <h3>Send me a message</h3>
-            <div className='flex items-center gap-4 w-full'>
+            <div className='flex flex-col md:flex-row items-center gap-4 w-full'>
                 <InputField label='Name' placeholder='Your Name' />
                 <InputField label='Email' placeholder='Your Email' />
             </div>

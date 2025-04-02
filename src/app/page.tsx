@@ -53,7 +53,7 @@ export default function Home() {
   ] as const;
 
   return (
-    <main className="flex flex-col sections-gap mx-24">
+    <main className="flex flex-col sections-gap mx-0 2xl:mx-24 navbar-space">
       <section className="hero flex flex-col gap-8 items-center justify-center text-center relative">
         <header>
           <Image src={myImage} alt="profile-img" width={164} height={164} />
@@ -75,7 +75,7 @@ export default function Home() {
 
       <section className="projects flex flex-col gap-8">
         <header className="section-header">Projects</header>
-        <motion.div className="project-cards grid grid-cols-2 justify-items-center gap-12" initial={{ transform: "translateY(100px)" }} viewport={{ once: true, amount: 0.1 }} whileInView={{ transform: "translateY(0px)" }} transition={{ type: 'spring' }}>
+        <motion.div className="project-cards grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12" initial={{ transform: "translateY(100px)" }} viewport={{ once: true, amount: 0.1 }} whileInView={{ transform: "translateY(0px)" }} transition={{ type: 'spring' }}>
           {PROJECTS.map((project, index) => (
             <AnimatedBorderCard key={index} prime={project.prime}>
               <ProjectCard link={project.link} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
@@ -86,7 +86,7 @@ export default function Home() {
 
       <section className="skills flex flex-col gap-8">
         <header className="section-header">Skills</header>
-        <div className="skill-buttons grid grid-cols-4 gap-4">
+        <div className="skill-buttons flex flex-wrap md:grid md:grid-cols-4 gap-4">
           {SKILLS.map((skill, index) => (
             <SkillButton name={skill.name} icon={skill.icon} key={index} />
           ))}
@@ -106,7 +106,7 @@ export default function Home() {
 
       <section className="contact">
         <header className="section-header">Contact</header>
-        <div className="flex w-full flex-1 gap-8">
+        <div className="flex w-full flex-col lg:flex-row lg:flex-1 gap-8">
           <ContactInfoCard />
           <SendMessageCard />
         </div>

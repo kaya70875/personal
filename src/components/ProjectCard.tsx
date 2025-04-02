@@ -28,7 +28,7 @@ export default function ProjectCard({ name, image, desc, link }: ProjectCardProp
             <Image className='rounded-lg' src={image.src} width={image.width ?? 500} height={image.height ?? 500} alt='project' />
             <p className='text-text opacity-90 font-light'>{desc}</p>
 
-            <div className="flex items-center gap-16 justify-center w-full">
+            <div className="flex items-center gap-4 sm:gap-8 lg:gap-12 lg:md-8 justify-center w-full flex-col sm:flex-row md:flex-col lg:flex-row">
                 <Link href={link.live} target='__blank'>
                     <Button>View Live</Button>
                 </Link>
