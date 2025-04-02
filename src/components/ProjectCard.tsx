@@ -22,18 +22,21 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ name, image, desc, link }: ProjectCardProps) {
+
+    const projectButtonStyles = "min-w-32"
+
     return (
         <div className="flex flex-col justify-between items-center gap-8">
             <header className='font-bold text-2xl text-text uppercase'>{name}</header>
             <Image className='rounded-lg' src={image.src} width={image.width ?? 500} height={image.height ?? 500} alt='project' />
             <p className='text-text opacity-90 font-light'>{desc}</p>
 
-            <div className="flex items-center gap-4 sm:gap-8 lg:gap-12 lg:md-8 justify-center w-full flex-col sm:flex-row md:flex-col lg:flex-row">
+            <div className="flex items-center justify-center gap-8 lg:gap-12 lg:md-8 w-full sm:flex-row">
                 <Link href={link.live} target='__blank'>
-                    <Button>View Live</Button>
+                    <Button className={projectButtonStyles}>View Live</Button>
                 </Link>
                 <Link href={link.github} target='__blank'>
-                    <Button variant="secondary">Github</Button>
+                    <Button className={projectButtonStyles} variant="secondary">Github</Button>
                 </Link>
             </div>
         </div>

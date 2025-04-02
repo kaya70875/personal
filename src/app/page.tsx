@@ -62,8 +62,8 @@ export default function Home() {
         <Typewriter text="Full-Stack Developer | React | Next.js | FastAPI" />
         <h3 className="max-w-3xl 2xl:max-w-4xl">I turn ideas into code and write about my journey as a developer. Let’s build something cool!</h3>
         <div className="flex items-center gap-16 justify-center w-full">
-          <Button>View My Work</Button>
-          <Button variant="secondary">See My Blog</Button>
+          <Button className="w-48">View My Work</Button>
+          <Button className="w-48" variant="secondary">See My Blog</Button>
         </div>
 
         <Socials className="w-full mt-4" />
@@ -86,7 +86,7 @@ export default function Home() {
 
       <section className="skills flex flex-col gap-8">
         <header className="section-header">Skills</header>
-        <div className="skill-buttons flex flex-wrap md:grid md:grid-cols-4 gap-4">
+        <div className="skill-buttons grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {SKILLS.map((skill, index) => (
             <SkillButton name={skill.name} icon={skill.icon} key={index} />
           ))}
