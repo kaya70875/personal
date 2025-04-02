@@ -4,11 +4,12 @@ interface ButtonProps {
     variant?: 'primary' | 'secondary';
     children: React.ReactNode;
     onClick?: () => void;
+    className?: string;
 }
 
-export default function Button({ variant = 'primary', children, onClick }: ButtonProps) {
+export default function Button({ variant = 'primary', children, onClick, className }: ButtonProps) {
 
-    const baseStyles = 'px-4 py-3 rounded-lg cursor-pointer font-[600] w-42 transition duration-300 ease-in-out';
+    const baseStyles = 'px-4 py-3 rounded-lg cursor-pointer font-[600] transition duration-300 ease-in-out';
 
     const variants = {
         primary: 'bg-accent text-text hover:opacity-80',
@@ -16,7 +17,7 @@ export default function Button({ variant = 'primary', children, onClick }: Butto
     }
 
     return (
-        <button onClick={onClick} className={`${baseStyles} ${variants[variant]}`}>
+        <button onClick={onClick} className={`${baseStyles} ${variants[variant]} ${className}`}>
             {children}
         </button>
     )
