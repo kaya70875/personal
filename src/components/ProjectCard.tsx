@@ -26,10 +26,12 @@ export default function ProjectCard({ name, image, desc, link }: ProjectCardProp
     const projectButtonStyles = "min-w-32"
 
     return (
-        <div className="flex flex-col justify-between items-center gap-8">
-            <header className='font-bold text-2xl text-text uppercase'>{name}</header>
-            <Image className='rounded-lg' src={image.src} width={image.width ?? 500} height={image.height ?? 500} alt='project' />
-            <p className='text-text opacity-90 font-light'>{desc}</p>
+        <div className="flex flex-col justify-between h-full items-center gap-8">
+            <div className='flex flex-col gap-8 items-center'>
+                <header className='font-bold text-2xl text-text uppercase'>{name}</header>
+                <Image className='rounded-lg' src={image.src} width={image.width ?? 500} height={image.height ?? 500} alt='project' />
+                <p className='text-text opacity-90 font-light'>{desc}</p>
+            </div>
 
             <div className="flex items-center justify-center gap-8 lg:gap-12 lg:md-8 w-full sm:flex-row">
                 <Link href={link.live} target='__blank'>
