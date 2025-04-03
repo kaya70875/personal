@@ -26,7 +26,7 @@ export default function Footer() {
 
     return (
         <footer className='w-full bg-text p-2 lg:p-8 flex flex-col gap-4'>
-            <div className='default-container text-white flex justify-center lg:justify-around gap-4 lg:gap-0'>
+            <div className='default-container text-white flex flex-col sm:flex-row justify-center lg:justify-around gap-4 lg:gap-0'>
                 <section className="contact-info flex flex-col gap-8">
                     <p>Contact Info</p>
                     <div className='flex flex-col gap-4'>

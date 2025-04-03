@@ -61,7 +61,7 @@ export default function Home() {
         <h1 className="max-w-2xl">Hi, I am <span className="text-accent">Ahmet. </span>I build things for the web.</h1>
         <Typewriter text="Full-Stack Developer | React | Next.js | FastAPI" />
         <h3 className="max-w-3xl 2xl:max-w-4xl">I turn ideas into code and write about my journey as a developer. Let’s build something cool!</h3>
-        <div className="flex items-center gap-16 justify-center w-full">
+        <div className="flex items-center gap-8 sm:gap-16 justify-center w-full">
           <Button className="w-48">View My Work</Button>
           <Button className="w-48" variant="secondary">See My Blog</Button>
         </div>
@@ -106,7 +106,7 @@ export default function Home() {
 
       <section className="contact flex flex-col gap-8">
         <header className="section-header">Contact</header>
-        <div className="flex w-full flex-col lg:flex-row lg:flex-1 gap-8 bg-white">
+        <div className="flex w-full flex-col-reverse lg:flex-row lg:flex-1 gap-8 bg-white">
           <ContactInfoCard />
           <SendMessageCard />
         </div>
