@@ -9,13 +9,13 @@ import noteImg from '../../public/images/note.png';
 import Image from "next/image";
 import IconArrow from "@/svg/IconArrow";
 import { Typewriter } from "@/components/motion/Typewriter";
-import { motion } from 'motion/react';
 import AnimatedBorderCard from "@/components/motion/AnimatedBorderCard";
 import SkillButton from "@/components/SkillButton";
 import { SKILLS } from "@/data/skills";
 import ContactInfoCard from "@/components/contact/ContactInfoCard";
 import Socials from "@/components/Socials";
 import SendMessageCard from "@/components/contact/SendMessageCard";
+import AnimatedSection from "@/components/motion/AnimatedSection";
 
 export default function Home() {
 
@@ -54,7 +54,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col sections-gap mx-0 2xl:mx-24 navbar-space">
-      <section className="hero flex flex-col gap-8 items-center justify-center text-center relative">
+      <AnimatedSection className="hero flex flex-col gap-8 items-center justify-center text-center relative">
         <header>
           <Image src={myImage} alt="profile-img" width={164} height={164} />
         </header>
@@ -71,29 +71,29 @@ export default function Home() {
         <div className="bounce-arrow absolute -bottom-16 animate-bounce cursor-pointer duration-200 ease-in hover:text-accent">
           <IconArrow />
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="projects flex flex-col gap-8">
+      <AnimatedSection className="projects flex flex-col gap-8">
         <header className="section-header">Projects</header>
-        <motion.div className="project-cards grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12" initial={{ transform: "translateY(100px)" }} viewport={{ once: true, amount: 0.1 }} whileInView={{ transform: "translateY(0px)" }} transition={{ type: 'spring' }}>
+        <div className="project-cards grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12">
           {PROJECTS.map((project, index) => (
             <AnimatedBorderCard key={index} prime={project.prime}>
               <ProjectCard link={project.link} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
             </AnimatedBorderCard>
           ))}
-        </motion.div>
-      </section>
+        </div>
+      </AnimatedSection>
 
-      <section className="skills flex flex-col gap-8">
+      <AnimatedSection className="skills flex flex-col gap-8">
         <header className="section-header">Skills</header>
         <div className="skill-buttons grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {SKILLS.map((skill, index) => (
             <SkillButton name={skill.name} icon={skill.icon} key={index} />
           ))}
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="about flex flex-col gap-8">
+      <AnimatedSection className="about flex flex-col gap-8">
         <header className="section-header">About Me</header>
         <div className="p-4 sm:p-8 w-full flex flex-col gap-8 shadow-lg rounded-lg bg-white text-text opacity-90 tracking-wider leading-loose">
           <p>Hey there! I’m Ahmet, a developer passionate about transforming ideas into reality through code. Whether it’s building sleek UIs, optimizing performance, or diving into new technologies, I’m always up for a challenge.</p>
@@ -102,15 +102,15 @@ export default function Home() {
           <p>Currently, I am working on a couple of projects, carefully selecting each one to address real-world challenges for specific users. One project, called Articlew, is designed to help users improve their English reading and writing skills. For this project, I scrape data from various websites and use FastAPI to build the backend, incorporating AI concepts to help users grasp word usage better. Additionally, I’m developing a Chrome extension named Summaread, which summarizes articles and highlights the essential parts without altering the original content.</p>
           <p>I’m constantly learning and evolving as a developer, and I’m excited to see where my passion for technology takes me next.</p>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="contact flex flex-col gap-8">
+      <AnimatedSection className="contact flex flex-col gap-8">
         <header className="section-header">Contact</header>
         <div className="flex w-full flex-col-reverse lg:flex-row lg:flex-1 gap-8 bg-white">
           <ContactInfoCard />
           <SendMessageCard />
         </div>
-      </section>
+      </AnimatedSection>
     </main>
   )
 }
