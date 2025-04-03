@@ -7,7 +7,6 @@ import financeImg from '../../public/images/finance.png';
 import myImage from '../../public/images/headshot.png';
 import noteImg from '../../public/images/note.png';
 import Image from "next/image";
-import IconArrow from "@/svg/IconArrow";
 import { Typewriter } from "@/components/motion/Typewriter";
 import AnimatedBorderCard from "@/components/motion/AnimatedBorderCard";
 import SkillButton from "@/components/SkillButton";
@@ -16,6 +15,8 @@ import ContactInfoCard from "@/components/contact/ContactInfoCard";
 import Socials from "@/components/Socials";
 import SendMessageCard from "@/components/contact/SendMessageCard";
 import AnimatedSection from "@/components/motion/AnimatedSection";
+import Link from "next/link";
+import { useRef } from "react";
 
 export default function Home() {
 
@@ -52,6 +53,8 @@ export default function Home() {
     }
   ] as const;
 
+  const projectsRef = useRef<HTMLElement | null>(null);
+
   return (
     <main className="flex flex-col sections-gap mx-0 2xl:mx-24 navbar-space">
       <AnimatedSection className="hero flex flex-col gap-8 items-center justify-center text-center relative">
@@ -62,18 +65,16 @@ export default function Home() {
         <Typewriter text="Full-Stack Developer | React | Next.js | FastAPI" />
         <h3 className="max-w-3xl 2xl:max-w-4xl">I turn ideas into code and write about my journey as a developer. Let’s build something cool!</h3>
         <div className="flex items-center gap-8 sm:gap-16 justify-center w-full">
-          <Button className="w-48">View My Work</Button>
-          <Button className="w-48" variant="secondary">See My Blog</Button>
+          <Button onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' })} className="w-48">View My Work</Button>
+          <Link href={'/blog'}>
+            <Button className="w-48" variant="secondary">See My Blog</Button>
+          </Link>
         </div>
 
         <Socials className="w-full mt-4" />
-
-        <div className="bounce-arrow absolute -bottom-16 animate-bounce cursor-pointer duration-200 ease-in hover:text-accent">
-          <IconArrow />
-        </div>
       </AnimatedSection>
 
-      <AnimatedSection className="projects flex flex-col gap-8">
+      <AnimatedSection ref={projectsRef} className="projects flex flex-col gap-8 scroll-mt-32">
         <header className="section-header">Projects</header>
         <div className="project-cards grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12">
           {PROJECTS.map((project, index) => (
@@ -104,7 +105,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="contact flex flex-col gap-8">
+      <AnimatedSection className="contact flex flex-col gap-8 scroll-mt-32">
         <header className="section-header">Contact</header>
         <div className="flex w-full flex-col-reverse lg:flex-row lg:flex-1 gap-8 bg-white">
           <ContactInfoCard />

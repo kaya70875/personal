@@ -23,11 +23,21 @@ export default function Navbar() {
         },
         {
             name: 'Contact',
-            url: '/contact'
+            url: '#'
         },
     ];
 
     const [open, setOpen] = useState(false);
+
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, name: string) => {
+        if (name === 'Contact') {
+            e.preventDefault();
+            const contactRef = document?.querySelector('.contact');
+            if (contactRef) {
+                contactRef.scrollIntoView({ behavior: 'smooth' })
+            }
+        }
+    }
 
     return (
         <nav className='flex w-full items-center justify-between fixed top-0 left-0 default-container shadow-xl z-30 backdrop-blur-sm'>
@@ -38,7 +48,7 @@ export default function Navbar() {
             <ul className='nav-items hidden md:flex items-center gap-8 text-text cursor-pointer'>
                 {navLinks?.map((link, index) => (
                     <li key={index}>
-                        <NavLink href={link.url}>{link.name}</NavLink>
+                        <NavLink onClick={(e) => handleScroll(e!, link.name)} href={link.url}>{link.name}</NavLink>
                     </li>
                 ))}
                 <IconMoon />

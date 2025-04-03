@@ -5,10 +5,11 @@ import { motion } from 'motion/react'
 
 interface AnimatedSectionProps {
     className?: string;
+    ref?: React.Ref<HTMLElement>;
     children: React.ReactNode;
 }
 
-export default function AnimatedSection({ className, children }: AnimatedSectionProps) {
+export default function AnimatedSection({ className, children, ref }: AnimatedSectionProps) {
 
     const fadeInUp = {
         initial: { opacity: 0, y: 50 },
@@ -18,7 +19,7 @@ export default function AnimatedSection({ className, children }: AnimatedSection
     };
 
     return (
-        <motion.section className={className} {...fadeInUp}>
+        <motion.section ref={ref} className={className} {...fadeInUp}>
             {children}
         </motion.section>
     )
