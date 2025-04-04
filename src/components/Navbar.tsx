@@ -15,7 +15,7 @@ export default function Navbar() {
         },
         {
             name: 'Resume',
-            url: '/resume'
+            url: '/api/resume'
         },
         {
             name: 'Blog',
