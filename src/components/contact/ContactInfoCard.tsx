@@ -32,7 +32,7 @@ export default function ContactInfoCard() {
             ))}
             <div className="line w-full" />
             <h2>Socials</h2>
-            <Socials />
+            <Socials gap='gap-4' />
             <div className="line w-full" />
 
             <Link href={'https://buymeacoffee.com/kaya70875'} target='__blank' className='bg-accent text-text p-3 w-48 rounded-lg font-medium flex items-center gap-2 cursor-pointer hover:opacity-80 transition-all ease-in duration-200'>

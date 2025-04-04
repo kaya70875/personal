@@ -42,7 +42,7 @@ export default function Navbar() {
     return (
         <nav className='flex w-full items-center justify-between fixed top-0 left-0 default-container shadow-xl z-30 backdrop-blur-sm'>
             <header>
-                <h2>ahmet.Dev</h2>
+                <h2>ahmetky.Dev</h2>
             </header>
 
             <ul className='nav-items hidden md:flex items-center gap-8 text-text cursor-pointer'>

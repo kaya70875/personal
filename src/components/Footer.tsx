@@ -52,7 +52,7 @@ export default function Footer() {
 
                 <section className="connect flex flex-col gap-8">
                     <p>Connect</p>
-                    <Socials className='!text-white' />
+                    <Socials gap='gap-4' className='!text-white' />
                 </section>
             </div>
             <section className="copyw flex flex-col gap-4 items-center justify-center w-full">
