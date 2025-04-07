@@ -13,8 +13,6 @@ export default function SendMessageCard() {
 
     const [loading, setLoading] = useState(false);
 
-    console.log(form);
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
