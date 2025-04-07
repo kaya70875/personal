@@ -5,10 +5,11 @@ import React, { useState } from 'react'
 import NavLink from './NavLink';
 import { MdMenu } from 'react-icons/md';
 import MobileNav from './mobile/MobileNav';
-import { usePathname, useRouter } from 'next/navigation';
-import { scrollToContact } from '@/utils/helpers';
+import { useScrollNavigation } from '@/hooks/useScroll';
 
 export default function Navbar() {
+
+    const { handleContactScroll } = useScrollNavigation();
 
     const navLinks = [
         {
@@ -30,18 +31,10 @@ export default function Navbar() {
     ];
 
     const [open, setOpen] = useState(false);
-    const router = useRouter();
-    const pathname = usePathname();
 
-    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, name: string) => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, name: string) => {
         if (name === 'Contact') {
-            e.preventDefault();
-
-            if (pathname === '/') {
-                scrollToContact();
-            } else {
-                router.push('/?scrollTo=contact');
-            }
+            handleContactScroll(e);
         }
     }
 
@@ -54,13 +47,13 @@ export default function Navbar() {
             <ul className='nav-items hidden md:flex items-center gap-8 text-text cursor-pointer'>
                 {navLinks?.map((link, index) => (
                     <li key={index}>
-                        <NavLink onClick={(e) => handleScroll(e!, link.name)} href={link.url}>{link.name}</NavLink>
+                        <NavLink onClick={(e) => handleClick(e!, link.name)} href={link.url}>{link.name}</NavLink>
                     </li>
                 ))}
                 <IconMoon />
             </ul>
 
-            <MobileNav open={open} navLinks={navLinks} />
+            <MobileNav open={open} setOpen={setOpen} navLinks={navLinks} />
 
             <div className='flex md:hidden items-center gap-4'>
                 <MdMenu onClick={() => setOpen((prev) => !prev)} className='block md:hidden' size={24} color='var(--color-text)' />
