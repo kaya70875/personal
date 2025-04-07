@@ -89,7 +89,7 @@ export default function Home() {
         <Socials className="w-full mt-4" />
       </AnimatedSection>
 
-      <AnimatedSection ref={projectsRef} className="projects flex flex-col gap-8 scroll-mt-32">
+      <AnimatedSection ref={projectsRef} className="projects flex flex-col gap-8 scroll-mt-[84px]">
         <header className="section-header">Projects</header>
         <div className="project-cards grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12">
           {PROJECTS.map((project, index) => (
@@ -125,7 +125,7 @@ export default function Home() {
 
       </AnimatedSection>
 
-      <AnimatedSection className="contact flex flex-col gap-8 scroll-mt-32">
+      <AnimatedSection className="contact flex flex-col gap-8 scroll-mt-[84px]">
         <header className="section-header">Contact</header>
         <div className="flex w-full flex-col-reverse lg:flex-row lg:flex-1 gap-8 bg-white">
           <ContactInfoCard />
