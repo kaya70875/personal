@@ -5,6 +5,8 @@ import React, { useState } from 'react'
 import NavLink from './NavLink';
 import { MdMenu } from 'react-icons/md';
 import MobileNav from './mobile/MobileNav';
+import { usePathname, useRouter } from 'next/navigation';
+import { scrollToContact } from '@/utils/helpers';
 
 export default function Navbar() {
 
@@ -28,13 +30,17 @@ export default function Navbar() {
     ];
 
     const [open, setOpen] = useState(false);
+    const router = useRouter();
+    const pathname = usePathname();
 
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, name: string) => {
         if (name === 'Contact') {
             e.preventDefault();
-            const contactRef = document?.querySelector('.contact');
-            if (contactRef) {
-                contactRef.scrollIntoView({ behavior: 'smooth' })
+
+            if (pathname === '/') {
+                scrollToContact();
+            } else {
+                router.push('/?scrollTo=contact');
             }
         }
     }
