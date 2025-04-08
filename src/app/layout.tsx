@@ -22,20 +22,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-          (function() {
-            const theme = localStorage.getItem('theme');
-            if (theme === 'dark') {
-              document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-              document.documentElement.setAttribute('data-theme', 'light');
-            }
-          })();
-        `,
-        }}
-      />
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {
+              const theme = localStorage.getItem('theme');
+              if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+              } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+              }
+            })();
+          `,
+          }}
+        />
+      </head>
       <body
         className={`${poppins.className} antialiased`}
       >
