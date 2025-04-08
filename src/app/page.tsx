@@ -124,14 +124,16 @@ export default function Home() {
         </div>
 
       </AnimatedSection>
-
-      <AnimatedSection className="contact flex flex-col gap-8 scroll-mt-[84px]">
-        <header className="section-header">Contact</header>
-        <div className="flex w-full flex-col-reverse lg:flex-row lg:flex-1 gap-8 bg-white">
-          <ContactInfoCard />
-          <SendMessageCard />
-        </div>
-      </AnimatedSection>
+      
+      <div className="contact scroll-mt-[84px]">
+        <AnimatedSection className="flex flex-col gap-8">
+          <header className="section-header">Contact</header>
+          <div className="flex w-full flex-col-reverse lg:flex-row lg:flex-1 gap-8">
+            <ContactInfoCard />
+            <SendMessageCard />
+          </div>
+        </AnimatedSection>
+      </div>
     </main>
   )
 }
