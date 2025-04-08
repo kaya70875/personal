@@ -35,7 +35,7 @@ export default function RootLayout({
           })();
         `,
         }}
-      ></script>
+      />
       <body
         className={`${poppins.className} antialiased`}
       >

@@ -5,8 +5,8 @@ import AnimatedSection from '@/components/motion/AnimatedSection';
 
 export default function Page() {
     return (
-        <AnimatedSection className='flex flex-col gap-8 items-center justify-center w-full h-screen'>
-            <Image src={comingSoon} alt='cs' width={312} height={312} />
+        <AnimatedSection className='flex flex-col gap-8 items-center justify-center w-full h-screen text-text dark:text-dark-text'>
+            <Image className='rounded-lg' src={comingSoon} alt='cs' width={312} height={312} />
             <h1>Coming Soon !</h1>
         </AnimatedSection>
     )

@@ -82,7 +82,7 @@ export default function Home() {
         <div className="flex items-center gap-8 sm:gap-16 justify-center w-full">
           <Button onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' })} className="w-36 sm:w-48 hover:opacity-80">View My Work</Button>
           <Link href={'/blog'}>
-            <Button className="w-36 sm:w-48 dark:text-primary dark:bg-dark-text" variant="secondary">See My Blog</Button>
+            <Button className="w-36 sm:w-48" variant="secondary">See My Blog</Button>
           </Link>
         </div>
 
@@ -111,7 +111,7 @@ export default function Home() {
 
       <AnimatedSection className="about flex flex-col gap-8">
         <header className="section-header">About Me</header>
-        <div className="p-4 sm:p-8 w-full flex flex-col gap-8 shadow-lg rounded-lg bg-white text-text opacity-90 tracking-wider leading-loose">
+        <div className="p-4 sm:p-8 w-full flex flex-col gap-8 shadow-lg rounded-lg bg-white dark:bg-dark-primary text-text dark:text-dark-text opacity-90 tracking-wider leading-loose">
           <header className="font-bold text-xl">Hey there 🖐</header>
           <p>I’m Ahmet, a developer passionate about transforming ideas into reality through code. Whether it’s building sleek UIs, optimizing performance, or diving into new technologies, I’m always up for a challenge.</p>
           <p>I began my coding journey at 15 with C++, where I built basic projects and learned the fundamentals of programming. My drive to create led me to explore C#, and I developed simple apps and algorithms that taught me how to solve real-world problems.</p>
@@ -124,7 +124,7 @@ export default function Home() {
         </div>
 
       </AnimatedSection>
-      
+
       <div className="contact scroll-mt-[84px]">
         <AnimatedSection className="flex flex-col gap-8">
           <header className="section-header">Contact</header>
