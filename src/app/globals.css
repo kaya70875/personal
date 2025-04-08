@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 * {
   box-sizing: border-box;
 }
@@ -9,18 +11,16 @@
 }
 
 h1 {
-  color: var(--color-text);
   font-size: clamp(2rem, 10vw, 3rem);
   font-weight: bold;
+
 }
 
 h2 {
-  color : var(--color-text);
   font-size: 1.5rem;
 }
 
 h3 {
-  color: var(--color-text);
   font-size: clamp(1.5rem, 7vw, 2rem);
   font-weight: 300;
 }
@@ -31,6 +31,12 @@ h3 {
   --color-accent: #FACC15;
   --color-bg: #F8FAFC;
   --color-text: #0F172A;
+
+  --color-dark-bg: #0F172A;
+  --color-dark-text: #F8FAFC;
+  --color-dark-primary: #334155;
+  --color-dark-secondary: #94A3B8;
+  --color-dark-accent: #FACC15;
 }
 
 @layer base {
@@ -49,13 +55,11 @@ h3 {
 
 @layer utilities {
   .section-header {
-    color: var(--color-text);
     font-size: 2rem;
     font-weight: bold;
   }
 
   .line {
-    background-color: var(--color-text);
     height: 1px;
     opacity: 0.8;
   }

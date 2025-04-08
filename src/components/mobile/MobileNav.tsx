@@ -24,7 +24,7 @@ export default function MobileNav({ navLinks, open, setOpen }: MobileNavProps) {
     }
 
     return (
-        <div className={`hamburger-menu ${open ? 'block' : 'hidden'} fixed md:hidden inset-x-0 z-10 top-20 p-4 bg-white shadow-lg text-text flex flex-col gap-8 items-center justify-center`}>
+        <div className={`hamburger-menu ${open ? 'block' : 'hidden'} fixed md:hidden inset-x-0 z-10 top-20 p-4 bg-white dark:bg-dark-bg shadow-lg text-text dark:text-dark-text flex flex-col gap-8 items-center justify-center`}>
             {navLinks?.map((link, index) => (
                 <li key={index} className='list-none'>
                     <NavLink onClick={(e) => handleClick(e!, link.name)} href={link.url}>{link.name}</NavLink>

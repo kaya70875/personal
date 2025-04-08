@@ -9,12 +9,12 @@ export default function ContactInfoCard() {
         {
             name: 'Email',
             value: 'kaya70875@gmail.com',
-            icon: <MdEmail size={24} color='var(--color-text)' />
+            icon: <MdEmail size={24} className='text-text dark:text-dark-text' />
         },
         {
             name: 'Location',
             value: 'Istanbul, Turkey',
-            icon: <MdLocationOn size={24} color='var(--color-text)' />
+            icon: <MdLocationOn size={24} className='text-text dark:text-dark-text' />
         }
     ] as const;
 
@@ -30,7 +30,7 @@ export default function ContactInfoCard() {
                     </div>
                 </div>
             ))}
-            <div className="line w-full" />
+            <div className="line w-full text-text dark:text-dark-text" />
             <h2>Socials</h2>
             <Socials gap='gap-4' />
             <div className="line w-full" />

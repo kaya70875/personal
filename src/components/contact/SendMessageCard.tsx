@@ -37,7 +37,6 @@ export default function SendMessageCard() {
         setLoading(false);
 
         toast.success('Message sended successfully.');
-
     }
 
     return (
@@ -55,10 +54,10 @@ export default function SendMessageCard() {
 
             <div className='flex flex-col gap-2 w-full'>
                 <label htmlFor="message">Message</label>
-                <textarea name="message" onChange={(e) => setForm({ ...form, message: e.target.value })} id="msg" placeholder='Write your message' className='border border-text p-4 rounded-lg w-full min-h-48' />
+                <textarea name="message" onChange={(e) => setForm({ ...form, message: e.target.value })} id="msg" placeholder='Write your message' className='border border-text dark:border-dark-text p-4 rounded-lg w-full min-h-48' />
             </div>
 
-            <button disabled={loading} type='submit' className='bg-text disabled:opacity-70 text-white p-3 w-48 rounded-lg font-medium flex items-center justify-center gap-2 cursor-pointer hover:opacity-80 transition-all ease-in duration-200'>
+            <button disabled={loading} type='submit' className='bg-text dark:bg-dark-text disabled:opacity-70 text-white dark:text-primary p-3 w-48 rounded-lg font-medium flex items-center justify-center gap-2 cursor-pointer hover:opacity-80 transition-all ease-in duration-200'>
                 <p>Send Message</p>
             </button>
         </form>

@@ -71,7 +71,7 @@ export default function Home() {
   }, [router, searchParams])
 
   return (
-    <main className="flex flex-col sections-gap mx-0 2xl:mx-24 navbar-space">
+    <main className="flex flex-col sections-gap mx-0 2xl:mx-24 navbar-space text-text dark:text-dark-text">
       <AnimatedSection className="hero flex flex-col gap-8 items-center justify-center text-center relative">
         <header>
           <Image src={myImage} alt="profile-img" width={164} height={164} />
@@ -80,9 +80,9 @@ export default function Home() {
         <Typewriter text="Full-Stack Developer | React | Next.js | FastAPI" />
         <h3 className="max-w-3xl 2xl:max-w-4xl">I turn ideas into code and write about my journey as a developer. Let’s build something cool!</h3>
         <div className="flex items-center gap-8 sm:gap-16 justify-center w-full">
-          <Button onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' })} className="w-36 sm:w-48">View My Work</Button>
+          <Button onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' })} className="w-36 sm:w-48 hover:opacity-80">View My Work</Button>
           <Link href={'/blog'}>
-            <Button className="w-36 sm:w-48" variant="secondary">See My Blog</Button>
+            <Button className="w-36 sm:w-48 dark:text-primary dark:bg-dark-text" variant="secondary">See My Blog</Button>
           </Link>
         </div>
 

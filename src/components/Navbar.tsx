@@ -6,6 +6,7 @@ import NavLink from './NavLink';
 import { MdMenu } from 'react-icons/md';
 import MobileNav from './mobile/MobileNav';
 import { useScrollNavigation } from '@/hooks/useScroll';
+import IconSun from '@/svg/IconSun';
 
 export default function Navbar() {
 
@@ -31,6 +32,7 @@ export default function Navbar() {
     ];
 
     const [open, setOpen] = useState(false);
+    const [toggleTheme, setToggleTheme] = useState(false);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, name: string) => {
         if (name === 'Contact') {
@@ -41,22 +43,24 @@ export default function Navbar() {
     return (
         <nav className='flex w-full items-center justify-between fixed top-0 left-0 default-container shadow-xl z-30 backdrop-blur-sm'>
             <header>
-                <h2>ahmetky.Dev</h2>
+                <h2 className='text-text dark:text-dark-text'>ahmetky.Dev</h2>
             </header>
 
-            <ul className='nav-items hidden md:flex items-center gap-8 text-text cursor-pointer'>
+            <ul className='nav-items hidden md:flex items-center gap-8 text-text dark:text-dark-text cursor-pointer'>
                 {navLinks?.map((link, index) => (
                     <li key={index}>
                         <NavLink onClick={(e) => handleClick(e!, link.name)} href={link.url}>{link.name}</NavLink>
                     </li>
                 ))}
-                <IconMoon />
+                <div onClick={() => setToggleTheme((prev) => !prev)} className={`cursor-pointer transition-all ease-in duration-200`}>
+                    {toggleTheme ? <IconSun /> : <IconMoon />}
+                </div>
             </ul>
 
             <MobileNav open={open} setOpen={setOpen} navLinks={navLinks} />
 
             <div className='flex md:hidden items-center gap-4'>
-                <MdMenu onClick={() => setOpen((prev) => !prev)} className='block md:hidden' size={24} color='var(--color-text)' />
+                <MdMenu onClick={() => setOpen((prev) => !prev)} className='block md:hidden text-text dark:text-dark-text' size={24} />
                 <IconMoon />
             </div>
 
