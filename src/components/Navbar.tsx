@@ -7,9 +7,11 @@ import { MdMenu } from 'react-icons/md';
 import MobileNav from './mobile/MobileNav';
 import { useScrollNavigation } from '@/hooks/useScroll';
 import IconSun from '@/svg/IconSun';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function Navbar() {
 
+    const { theme, setTheme } = useTheme();
     const { handleContactScroll } = useScrollNavigation();
 
     const navLinks = [
@@ -32,7 +34,6 @@ export default function Navbar() {
     ];
 
     const [open, setOpen] = useState(false);
-    const [toggleTheme, setToggleTheme] = useState(false);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, name: string) => {
         if (name === 'Contact') {
@@ -52,8 +53,8 @@ export default function Navbar() {
                         <NavLink onClick={(e) => handleClick(e!, link.name)} href={link.url}>{link.name}</NavLink>
                     </li>
                 ))}
-                <div onClick={() => setToggleTheme((prev) => !prev)} className={`cursor-pointer transition-all ease-in duration-200`}>
-                    {toggleTheme ? <IconSun /> : <IconMoon />}
+                <div onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className={`cursor-pointer transition-all ease-in duration-200`}>
+                    {theme === 'dark' ? <IconSun /> : <IconMoon />}
                 </div>
             </ul>
 

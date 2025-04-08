@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import { Poppins } from "next/font/google";
 import Footer from "@/components/Footer";
+import ThemeProvider from "@/context/ThemeContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,14 +22,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+          (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+              document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+              document.documentElement.setAttribute('data-theme', 'light');
+            }
+          })();
+        `,
+        }}
+      ></script>
       <body
         className={`${poppins.className} antialiased`}
       >
-        <div className="bg-bg flex flex-col sections-gap min-h-screen default-container relative">
-          <Navbar />
-          {children}
-        </div>
-        <Footer />
+        <ThemeProvider>
+          <div className="bg-bg dark:bg-dark-bg flex flex-col sections-gap min-h-screen default-container relative">
+            <Navbar />
+            {children}
+          </div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
