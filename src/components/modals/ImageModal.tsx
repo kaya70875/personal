@@ -2,13 +2,15 @@
 
 import { useModal } from '@/context/ImageModalContext'
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react'
 import { MdClose } from 'react-icons/md';
 import { motion } from 'motion/react';
+import { BeatLoader } from 'react-spinners';
 
 export default function ImageModal() {
 
     const { modalImage, setModalImage } = useModal();
+    const [isLoaded, setIsLoaded] = useState(false);
 
     return (
         <motion.div
@@ -20,7 +22,15 @@ export default function ImageModal() {
             <div className='w-full flex items-center justify-end' onClick={() => setModalImage({ ...modalImage, open: false })}>
                 <MdClose className='cursor-pointer text-text dark:text-dark-text' />
             </div>
-            <Image src={modalImage.image || ''} alt='modalImage' className='shadow-lg rounded-lg' />
+
+            <Image onLoad={() => setIsLoaded(true)} src={modalImage.image || ''} alt='modalImage' className='shadow-lg rounded-lg' />
+
+            {!isLoaded && (
+                <div className='flex items-center justify-center w-full'>
+                    <BeatLoader className='text-dark-bg dark:text-bg' color='var(--color-accent)' />
+                </div>
+            )}
+
         </motion.div>
     )
 }
