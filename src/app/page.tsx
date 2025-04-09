@@ -36,7 +36,8 @@ export default function Home() {
 
   return (
     <main className="flex flex-col sections-gap mx-0 2xl:mx-24 navbar-space text-text dark:text-dark-text">
-      <AnimatedSection className="hero flex flex-col gap-8 items-center justify-center text-center relative">
+      <AnimatedSection className="hero flex flex-col gap-8 items-center justify-center text-center relative z-10">
+        <div className="glow-container glow-dark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-20" />
         <header>
           <Image src={myImage} alt="profile-img" width={164} height={164} />
         </header>

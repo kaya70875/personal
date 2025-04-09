@@ -62,4 +62,14 @@ h3 {
     height: 1px;
     opacity: 0.8;
   }
+
+  .glow-dark {
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    box-shadow:
+      0 0 150px 90px #fff,  /* inner white */
+      0 0 220px 150px #f0f, /* middle magenta */
+      0 0 300px 220px #0ff; /* outer cyan */
+  }
 }
