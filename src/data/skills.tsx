@@ -9,6 +9,9 @@ import mongoIconSVG from "../../public/svg/mongo.svg";
 import firebaseIconSVG from "../../public/svg/firebase.svg";
 import fastapibaseIconSVG from "../../public/svg/fastapi-1.svg";
 import figmaIconSvg from "../../public/svg/figma.svg";
+import motionIconSvg from "../../public/svg/motion.svg";
+import seleniumIconSvg from "../../public/svg/selenium.svg"
+import jestIconSvg from "../../public/svg/jest.svg"
 
 export const SKILLS = [
     {
@@ -54,6 +57,18 @@ export const SKILLS = [
     {
         name: 'Figma',
         icon: figmaIconSvg
+    },
+    {
+        name: 'Motion',
+        icon: motionIconSvg
+    },
+    {
+        name: 'Selenium',
+        icon: seleniumIconSvg
+    },
+    {
+        name: 'Jest',
+        icon: jestIconSvg
     }
 
 
