@@ -1,17 +1,14 @@
 'use client';
 
-import IconMoon from '@/svg/IconMoon'
 import React, { useState } from 'react'
 import NavLink from './NavLink';
 import { MdMenu } from 'react-icons/md';
 import MobileNav from './mobile/MobileNav';
 import { useScrollNavigation } from '@/hooks/useScroll';
-import IconSun from '@/svg/IconSun';
-import { useTheme } from '@/context/ThemeContext';
+import ThemeChanger from './reusables/ThemeChanger';
 
 export default function Navbar() {
 
-    const { theme, setTheme } = useTheme();
     const { handleContactScroll } = useScrollNavigation();
 
     const navLinks = [
@@ -53,16 +50,14 @@ export default function Navbar() {
                         <NavLink onClick={(e) => handleClick(e!, link.name)} href={link.url}>{link.name}</NavLink>
                     </li>
                 ))}
-                <div onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className={`cursor-pointer transition-all ease-in duration-200`}>
-                    {theme === 'dark' ? <IconSun /> : <IconMoon />}
-                </div>
+                <ThemeChanger />
             </ul>
 
             <MobileNav open={open} setOpen={setOpen} navLinks={navLinks} />
 
             <div className='flex md:hidden items-center gap-4'>
                 <MdMenu onClick={() => setOpen((prev) => !prev)} className='block md:hidden text-text dark:text-dark-text' size={24} />
-                <IconMoon />
+                <ThemeChanger />
             </div>
 
         </nav>
