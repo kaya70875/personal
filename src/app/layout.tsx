@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { Poppins } from "next/font/google";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/context/ThemeContext";
+import ImageModalProvider from "@/context/ImageModalContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -42,11 +43,13 @@ export default function RootLayout({
         className={`${poppins.className} antialiased`}
       >
         <ThemeProvider>
-          <div className="bg-bg dark:bg-dark-bg flex flex-col sections-gap min-h-screen default-container relative">
-            <Navbar />
-            {children}
-          </div>
-          <Footer />
+          <ImageModalProvider>
+            <div className="bg-bg dark:bg-dark-bg flex flex-col sections-gap min-h-screen default-container relative">
+              <Navbar />
+              {children}
+            </div>
+            <Footer />
+          </ImageModalProvider>
         </ThemeProvider>
       </body>
     </html>
