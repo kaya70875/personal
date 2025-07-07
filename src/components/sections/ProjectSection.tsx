@@ -4,6 +4,7 @@ import AnimatedBorderCard from '../motion/AnimatedBorderCard'
 import ProjectCard from '../ProjectCard'
 import ImageModal from '../modals/ImageModal'
 import articlewImg from "../../../public/images/articlew.png";
+import youtubetranscriptImg from "../../../public/images/youtubetranscriptai.png";
 import financeImg from '../../../public/images/finance.png';
 import noteImg from '../../../public/images/note.png';
 import { useModal } from '@/context/ImageModalContext'
@@ -20,12 +21,22 @@ export default function ProjectSection({ projectsRef }: ProjectSectionProps) {
     const PROJECTS = [
         {
             name: 'articlew',
-            desc: 'articlew is a unique educational app designed to enhance your English learning and writing skills. With this app, users can input a word and receive example sentences, definitions, and contextual usages from a variety of topics and articles.',
+            desc: 'Articlew is a unique educational app designed to enhance your English learning and writing skills. With this app, users can input a word and receive example sentences, definitions, and contextual usages from a variety of topics and articles.',
             image: articlewImg,
             prime: true,
             link: {
                 live: 'https://learn-with-articles-next.vercel.app/search',
                 github: 'https://github.com/kaya70875/articlew'
+            }
+        },
+        {
+            name: 'youtubetranscriptai',
+            desc: 'YouTubeTranscriptAI solves the time-consuming problem of gathering and structuring large-scale transcript data from YouTube. Whether you are building a dataset for a machine learning model, analyzing trends across videos, or simply need raw transcripts for content processing — this tool handles it, fast. Users can submit any public YouTube channel and receive cleaned, structured transcript data in their preferred format — CSV, JSON or TXT. It supports full-channel exports with up to 600+ videos per job.',
+            image: youtubetranscriptImg,
+            prime: true,
+            link: {
+                live: 'https://youtubetranscriptai.vercel.app/',
+                github: 'https://github.com/kaya70875/youtube-transcript-fetcher-frontend'
             }
         },
         {
