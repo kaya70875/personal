@@ -6,7 +6,9 @@ export const Blog = defineDocumentType(() => ({
     fields: {
         title: {type: 'string', required: true},
         description: {type: 'string', required: true},
-        date: {type: 'date', required: true},
+        thumbnail: {type: 'string', required: false},
+        tags: { type: 'list', of: { type: 'string' }, required: false },
+        date: {type: 'date', required: true}
     },
     computedFields: {
         url: {type: 'string', resolve: (blog) => `/blogs/${blog._raw.flattenedPath}`},
