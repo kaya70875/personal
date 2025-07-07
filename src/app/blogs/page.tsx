@@ -14,9 +14,9 @@ export default function Page() {
     const blogs: Blog[] = (allBlogs as Blog[]).sort((a: Blog, b: Blog) => compareDesc(new Date(a.date), new Date(b.date)));
 
     return (
-        <AnimatedSection className='flex flex-col gap-8 items-center justify-center w-full h-screen text-text dark:text-dark-text'>
-            <div className="mx-auto max-w-xl py-8">
-                <h1 className="mb-8 text-center text-2xl font-black">Next.js + Contentlayer Example</h1>
+        <AnimatedSection className='flex flex-col gap-8 items-center justify-center w-full navbar-space text-text dark:text-dark-text'>
+            <h1>All Articles</h1>
+            <div className="grid grid-cols-3 gap-12 w-full justify-center">
                 {blogs.map((blog, idx) => (
                     <BlogCard key={idx} blog={blog} />
                 ))}
