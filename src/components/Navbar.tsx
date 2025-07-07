@@ -22,7 +22,7 @@ export default function Navbar() {
         },
         {
             name: 'Blog',
-            url: '/blog'
+            url: '/blogs'
         },
         {
             name: 'Contact',
