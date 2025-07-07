@@ -12,6 +12,7 @@ import figmaIconSvg from "../../public/svg/figma.svg";
 import motionIconSvg from "../../public/svg/motion.svg";
 import seleniumIconSvg from "../../public/svg/selenium.svg"
 import jestIconSvg from "../../public/svg/jest.svg"
+import redisIconSvg from "../../public/svg/redis.svg"
 
 export const SKILLS = [
     {
@@ -37,6 +38,10 @@ export const SKILLS = [
     {
         name: 'Fast API',
         icon: fastapibaseIconSVG
+    },
+    {
+        name: 'Redis',
+        icon: redisIconSvg
     },
     {
         name: 'Manifest',
