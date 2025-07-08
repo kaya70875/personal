@@ -1,8 +1,10 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypeHighlight from "rehype-highlight";
 
-export const Blog = defineDocumentType(() => ({
-    name: 'Blog',
-    filePathPattern: `**/*.md`,
+export const Post = defineDocumentType(() => ({
+    name: 'Post',
+    filePathPattern: `**/*.mdx`,
+    contentType: 'mdx',
     fields: {
         title: {type: 'string', required: true},
         description: {type: 'string', required: true},
@@ -11,8 +13,8 @@ export const Blog = defineDocumentType(() => ({
         date: {type: 'date', required: true}
     },
     computedFields: {
-        url: {type: 'string', resolve: (blog) => `/blogs/${blog._raw.flattenedPath}`},
+        url: {type: 'string', resolve: (doc) => `/blog/${doc._raw.flattenedPath}`},
     },
 }))
 
-export default makeSource({contentDirPath: 'blogs', documentTypes: [Blog]});
+export default makeSource({contentDirPath: 'posts', documentTypes: [Post], mdx: {rehypePlugins: [rehypeHighlight]}});

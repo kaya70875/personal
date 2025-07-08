@@ -2,7 +2,7 @@
 
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
-export default function BlogContent({ code }: { code: string }) {
+export default function PostContent({ code }: { code: string }) {
     const Component = useMDXComponent(code)
     return <Component />
 }
