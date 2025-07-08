@@ -1,14 +1,17 @@
+'use client';
+
 import Link from 'next/link'
 import React from 'react'
 import { Post } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns'
 import Image from 'next/image';
+import { withAnimation } from '@/components/hoc/WithAnimation';
 
 interface PostCardProps {
     post: Post;
 }
 
-export default function PostCard({ post }: PostCardProps) {
+function PostCard({ post }: PostCardProps) {
     return (
         <Link href={post.url} className="posts flex flex-col w-full bg-white shadow-lg rounded-lg cursor-pointer border border-gray-200">
             <div className='flex flex-col gap-4 h-60 relative'>
@@ -28,3 +31,5 @@ export default function PostCard({ post }: PostCardProps) {
         </Link>
     )
 }
+
+export const AnimatedPostCard = withAnimation(PostCard);

@@ -2,7 +2,7 @@ import React from 'react'
 import AnimatedSection from '@/components/motion/AnimatedSection';
 import { compareDesc } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
-import PostCard from './components/PostCard';
+import { AnimatedPostCard } from './components/PostCard';
 
 export default function Page() {
 
@@ -13,7 +13,7 @@ export default function Page() {
             <h1>All Articles</h1>
             <div className="grid grid-cols-3 gap-12 w-full justify-center">
                 {posts.map((post, idx) => (
-                    <PostCard key={idx} post={post} />
+                    <AnimatedPostCard key={idx} post={post} />
                 ))}
             </div>
         </AnimatedSection>
