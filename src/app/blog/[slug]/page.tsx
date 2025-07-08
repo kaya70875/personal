@@ -2,6 +2,8 @@ import { allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { format, parseISO } from 'date-fns'
 import PostContent from '../components/PostContent'
+import "prismjs/themes/prism.css";
+import Image from 'next/image';
 
 export const generateStaticParams = async () =>
     allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
@@ -21,16 +23,19 @@ export default function PostPage({ params }: { params: { slug: string } }) {
     if (!post) return notFound()
 
     return (
-        <article className="prose prose-lg dark:prose-dark max-w-prose mx-auto navbar-space">
-            <header className="flex flex-col gap-2">
+        <article className="prose prose-xl dark:prose-dark max-w-prose mx-auto navbar-space">
+            <div className='w-full flex items-center justify-center flex-col'>
+                <Image src={post.thumbnail as string} alt={post.title} width={200} height={200} />
+            </div>
+            <header>
                 <h1>{post.title}</h1>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                     {format(parseISO(post.date), 'LLLL d, yyyy')}
                 </p>
-                <p>{post.description}</p>
+                <h4>{post.description}</h4>
             </header>
             {/* ✅ Pass the MDX code to a Client Component */}
-            <div className='prose prose-lg dark:prose-dark max-w-prose'>
+            <div className='prose prose-md dark:prose-dark max-w-4xl'>
                 <PostContent code={post.body.code} />
             </div>
         </article>
