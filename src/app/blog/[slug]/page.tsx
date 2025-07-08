@@ -25,7 +25,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
     return (
         <article className="prose prose-xl dark:prose-dark max-w-prose mx-auto navbar-space">
             <div className='w-full flex items-center justify-center flex-col'>
-                <Image src={post.thumbnail as string} alt={post.title} width={200} height={200} />
+                <Image className='' src={post.thumbnail as string} alt={post.title} width={350} height={350} />
             </div>
             <header>
                 <h1>{post.title}</h1>
