@@ -1,0 +1,111 @@
+---
+title: How Java Taught Me to Refactor My Python Code with OOP
+description: How learning Java and OOP principles helped me refactor my messy Python helper functions into a clean, reusable class with shared context.
+thumbnail: /blog-images/java.png
+date: 2025-07-08
+---
+
+After spending some time grinding Object-Oriented Programming in Java, I started noticing something unexpected: my Python code was getting better too—especially in terms of design, clarity, and how I managed context between related functions.
+
+In this post, I want to share a real example from one of my projects. I had a collection of helper functions for analyzing and paraphrasing English sentences using a language model. It worked, but it lacked structure. Then, applying OOP concepts I learned from Java, I refactored those helpers into a class. The improvement in maintainability and readability was surprising.
+
+### Before: A Collection of Stateless Helper Functions
+
+Originally, my code looked something like this:
+
+```python
+def fix_grammar_errors(sentence, api_key): ...
+def paraphrase(sentence, api_key, context): ...
+def analyze_word(word, api_key): ...
+def compare_words(word1, word2, api_key): ...
+```
+
+Each function worked in isolation. But they all needed the same `api_key`, and I had to pass it around every time. There was no shared context, no encapsulation—just a bunch of loosely related functions scattered in a module.
+
+It technically worked, but I kept running into design limitations. There was no clear "owner" of these behaviors, and the repetition of parameters made things feel messier than they should have been.
+
+### The OOP Realization
+
+After writing a lot of Java, I naturally began asking:
+
+> “Who owns this responsibility?”
+
+That question led to the idea of creating a class. Since all these functions dealt with word analysis and manipulation using an API, I bundled them into a single class: `WordAssistant`.
+
+This way, I could initialize it once with the `api_key`, and then use its methods without repeating context everywhere.
+
+### After: A Cohesive, Context-Aware Class
+
+Here’s how I refactored it:
+
+```python
+class WordAssistant:
+    def __init__(self, api_key: str):
+        self.api_key = api_key # Here we initialized api key so we don't have to give every function to this parameter.
+
+    async def analyze_word(self, word: str) -> str:
+        content = {
+            "role": "user",
+            "content": f"Analyze '{word}' and give an example..."
+        }
+        return await asyncio.to_thread(get_chat_completion, self.api_key, content, 1.3, 'json_object')
+
+    async def fix_grammar_errors(self, sentence: str) -> tuple[str, str, str]:
+        content = {
+            "role": "user",
+            "content": f"Identify and fix grammar errors in '{sentence}'."
+        }
+        response = await asyncio.to_thread(get_chat_completion, self.api_key, content)
+        original, corrected = await asyncio.to_thread(highlight_corrections, sentence, response)
+        return original, corrected, response
+
+    async def paraphrase(self, sentence: str, context: str = 'casual') -> list:
+        content = {
+            "role": "user",
+            "content": f"Paraphrase '{sentence}' in a {context} way..."
+        }
+        response = await asyncio.to_thread(get_chat_completion, self.api_key, content)
+        return await asyncio.to_thread(extract_paraphrase_sentences, response)
+
+    async def compare_words(self, word_1: str, word_2: str) -> str:
+        content = {
+            "role": "user",
+            "content": f"Compare '{word_1}' and '{word_2}'..."
+        }
+        return await asyncio.to_thread(get_chat_completion, self.api_key, content, 1.3, 'json_object')
+```
+
+### Benefits I Gained from This Refactor
+
+1. **Shared Context**  
+   The API key is set once during initialization—no more passing it around manually to every function.
+
+2. **Better Abstraction**  
+   The class now represents a single concept: an assistant that handles word-related tasks. It’s clear, logical, and intuitive.
+
+3. **Easier Testing**  
+   It’s much easier to mock or stub this class in unit tests than managing separate functions with shared parameters.
+
+4. **Extensibility**  
+   If I want to add logging, caching, or rate limiting, I can do it at the class level or extend the class cleanly.
+
+5. **Cleaner Usage**  
+   Using the class looks like this:
+
+   ```python
+   assistant = WordAssistant(api_key="my-api-key")
+   result = await assistant.analyze_word("prevent")
+   print(result)
+   ```
+
+### Final Thoughts
+
+This refactor wasn’t about writing “more complex” code. It was about making the responsibilities of my code clearer and reducing duplication. That’s something Java really drilled into me—**the idea of letting objects own both data and behavior**.
+
+Even in a dynamic language like Python, a bit of OOP can go a long way in improving code structure. I still use simple functions when appropriate, but when multiple pieces of logic share context and belong together conceptually, I now reach for classes—confidently.
+
+If you're writing Python and you find yourself passing the same arguments to every function, stop and ask:
+
+> “Should this be a class?”
+
+That one question might lead you to cleaner, more maintainable code.
