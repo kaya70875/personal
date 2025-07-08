@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
@@ -68,8 +69,11 @@ h3 {
     height: 0px;
     border-radius: 50%;
     box-shadow:
-      0 0 150px 90px #fff,  /* inner white */
-      0 0 220px 150px #f0f, /* middle magenta */
-      0 0 300px 220px #0ff; /* outer cyan */
+      0 0 150px 90px #fff,
+      /* inner white */
+      0 0 220px 150px #f0f,
+      /* middle magenta */
+      0 0 300px 220px #0ff;
+    /* outer cyan */
   }
 }

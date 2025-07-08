@@ -21,16 +21,18 @@ export default function PostPage({ params }: { params: { slug: string } }) {
     if (!post) return notFound()
 
     return (
-        <article className="prose prose-lg dark:prose-invert max-w-prose mx-auto navbar-space">
-            <header className="mb-6">
-                <h1 className="mb-2">{post.title}</h1>
+        <article className="prose prose-lg dark:prose-dark max-w-prose mx-auto navbar-space">
+            <header className="flex flex-col gap-2">
+                <h1>{post.title}</h1>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                     {format(parseISO(post.date), 'LLLL d, yyyy')}
                 </p>
-                <p className="mt-1 text-gray-700 dark:text-gray-300">{post.description}</p>
+                <p>{post.description}</p>
             </header>
             {/* ✅ Pass the MDX code to a Client Component */}
-            <PostContent code={post.body.code} />
+            <div className='prose prose-lg dark:prose-dark max-w-prose'>
+                <PostContent code={post.body.code} />
+            </div>
         </article>
     )
 }
