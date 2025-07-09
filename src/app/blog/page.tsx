@@ -2,7 +2,7 @@ import React from 'react'
 import AnimatedSection from '@/components/motion/AnimatedSection';
 import { compareDesc } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
-import { AnimatedPostCard } from './components/PostCard';
+import { AnimatedPostCard } from './PostCard';
 
 export default function Page() {
 
