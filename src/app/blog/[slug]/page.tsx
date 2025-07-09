@@ -1,31 +1,24 @@
+'use client';
+
 import { allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { format, parseISO } from 'date-fns'
-import PostContent from '../components/PostContent'
-import "prismjs/themes/prism.css";
-import Image from 'next/image';
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import Image from 'next/image'
+import { use } from 'react';
 
-export const generateStaticParams = async () =>
-    allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
 
-export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
-    const post = allPosts.find((b) => b._raw.flattenedPath === params.slug)
+export default function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = use(params);
+    const post = allPosts.find((p) => p._raw.flattenedPath === slug);
     if (!post) return notFound()
 
-    return {
-        title: post.title,
-        description: post.description,
-    }
-}
-
-export default function PostPage({ params }: { params: { slug: string } }) {
-    const post = allPosts.find((b) => b._raw.flattenedPath === params.slug)
-    if (!post) return notFound()
+    const MDXContent = useMDXComponent(post.body.code)
 
     return (
-        <article className="prose prose-xl dark:prose-dark max-w-prose mx-auto navbar-space">
+        <article className="prose prose-lg dark:prose-dark max-w-prose mx-auto navbar-space">
             <div className='w-full flex items-center justify-center flex-col'>
-                <Image className='' src={post.thumbnail as string} alt={post.title} width={350} height={350} />
+                <Image src={post.thumbnail as string} alt={post.title} width={350} height={350} />
             </div>
             <header>
                 <h1>{post.title}</h1>
@@ -34,10 +27,8 @@ export default function PostPage({ params }: { params: { slug: string } }) {
                 </p>
                 <h4>{post.description}</h4>
             </header>
-            {/* ✅ Pass the MDX code to a Client Component */}
-            <div className='prose prose-md dark:prose-dark max-w-4xl'>
-                <PostContent code={post.body.code} />
-            </div>
+
+            <MDXContent />
         </article>
     )
 }
