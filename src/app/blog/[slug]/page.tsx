@@ -16,7 +16,7 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
     const MDXContent = useMDXComponent(post.body.code)
 
     return (
-        <article className="prose prose-lg dark:prose-dark max-w-prose mx-auto navbar-space">
+        <article className="prose prose-lg dark:prose-dark max-w-prose mx-auto navbar-space w-full">
             <div className='w-full flex items-center justify-center flex-col'>
                 <Image src={post.thumbnail as string} alt={post.title} width={350} height={350} />
             </div>
@@ -29,6 +29,7 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
             </header>
 
             <MDXContent />
+
         </article>
     )
 }
