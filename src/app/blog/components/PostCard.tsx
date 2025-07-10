@@ -13,7 +13,7 @@ interface PostCardProps {
 
 function PostCard({ post }: PostCardProps) {
     return (
-        <Link href={post.url} className="posts flex flex-col w-full bg-white shadow-lg rounded-lg cursor-pointer border border-gray-200">
+        <Link href={post.url} className="posts flex flex-col w-full bg-white shadow-lg rounded-lg cursor-pointer border border-gray-200 max-w-md">
             <div className='flex flex-col gap-4 h-60 relative'>
                 <Image fill className='rounded-t-lg border-b border-b-gray-200 object-cover' priority src={post.thumbnail as string} alt={post.title} />
             </div>
