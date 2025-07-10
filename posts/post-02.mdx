@@ -1,0 +1,298 @@
+---
+title: How to Fetch Thousands of YouTube Transcripts Safely and Efficiently
+description: A deep dive into building a scalable YouTube transcript fetcher using threading, proxies, realistic headers, retries, and clean Python code.
+thumbnail: /blog-images/youtube-transcripts.png
+date: 2025-07-08
+---
+
+Fetching transcripts from YouTube might seem simple—until you try to do it **thousands of times in a row**.
+
+If you're building a dataset for machine learning, training an LLM, or just want to collect massive amounts of YouTube content, you need a **reliable, efficient, and ban-resistant** way to fetch transcripts.
+
+In this post, I’ll walk you through how I designed and implemented a system that does just that. We'll cover the key Python techniques and tools I used, explain the trade-offs, and show you how to structure your code cleanly using Pydantic types.
+
+---
+
+## Why This Is Harder Than It Looks
+
+The YouTube Transcript API (an unofficial wrapper) works great at small scale. But if you try to send too many requests from the same IP in a short amount of time, YouTube may:
+
+- Temporarily **block** you (IP ban)
+- Serve you **rate-limited** or **incomplete** responses
+- Flag your requests as **bot-like behavior**
+
+To fetch thousands of transcripts reliably, we need to:
+
+- Use **realistic browser-like headers**
+- Respect **timeouts** and **error types**
+- Add **retries** for recoverable failures (like rate limiting)
+- Use **concurrent threads** to speed things up
+- Support **proxies** to avoid getting banned
+
+---
+
+## Step 1: Mimic Real Browsers with Headers
+
+Using `fake_useragent`, we generate a rotating set of headers that make our requests look more like those coming from a real browser.
+
+```python
+from fake_useragent import UserAgent
+import random
+
+ACCEPT_LANGUAGES = ["en-US,en;q=0.9", "fr-FR,fr;q=0.9"]
+REFERERS = ["https://www.youtube.com/", "https://www.google.com/"]
+
+def get_realistic_headers() -> dict:
+    ua = UserAgent()
+    return {
+        "User-Agent": ua.random,
+        "Accept": "text/html,application/xhtml+xml,...",
+        "Accept-Language": random.choice(ACCEPT_LANGUAGES),
+        "Referer": random.choice(REFERERS),
+        # Additional modern headers can go here
+    }
+```
+
+And we can use our headers like this with youtube-transcript-api since it is allowed to overwrite its default Session.
+
+```python
+headers = get_realistic_headers()
+httpx_client = httpx.Client(timeout=TRANSCRIPT_FETCH_TIMEOUT, headers=headers)
+
+ytt_api = YouTubeTranscriptApi(http_client=httpx_client) # Here we are initializing our custom Session.
+```
+
+This is important because YouTube’s systems look at request patterns, headers, and fingerprints. Without proper headers, your script will get flagged quickly.
+
+---
+
+## Step 2: Getting Data From API
+
+Here how we can fetch youtube transcripts with `youtube-transcript-api` with `video_id` paramater. Also notice that we are using `to_raw_data` function.
+
+You can get more information from here: [youtube-transcript-api](https://pypi.org/project/youtube-transcript-api/)
+
+```python
+from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._errors import NoTranscriptFound, VideoUnavailable, TranscriptsDisabled
+
+def fetch_transcript_with_snippet(video_id: str) -> dict | None:
+    try:
+        ytt_api = YouTubeTranscriptApi(http_client=httpx_client)
+        transcript = ytt_api.fetch(video_id).to_raw_data()
+
+        return {
+            "video_id": video_id,
+            "transcript": transcript,
+        }
+    except (NoTranscriptFound, VideoUnavailable, TranscriptsDisabled):
+        # You can print custom message here.
+        return None
+    except Exception as e:
+        print(f"⚠️ Unexpected error: {e}")
+        return None
+```
+
+This will return us a list of data format like this:
+
+```json
+{
+    "video_id": 1234,
+    "transcript": {
+        [
+            {
+                'text': 'Hey there',
+                'start': 0.0,
+                'duration': 1.54
+            },
+            {
+                'text': 'how are you',
+                'start': 1.54
+                'duration': 4.16
+            },
+            # ...
+        ]
+    }
+}
+
+```
+
+## Step 3: Add Retry Logic for IP Blocks
+
+Using `tenacity`, we can automatically retry requests when certain errors occur—like getting blocked by YouTube.
+
+```python
+from tenacity import retry, wait_fixed, stop_after_attempt, retry_if_exception_type
+from youtube_transcript_api._errors import IpBlocked
+
+@retry(retry=retry_if_exception_type(IpBlocked), wait=wait_fixed(1), stop=stop_after_attempt(2))
+def fetch_transcript(video_id: str, snippet):
+    api = YouTubeTranscriptApi(http_client=httpx_client)
+    transcript = api.fetch(video_id).to_dict()
+    return {"video_id": video_id, "transcript": transcript, "snippet": snippet.dict()}
+```
+
+Tenacity handles retries cleanly without having to write verbose try-except loops.
+
+---
+
+## Step 3: Use Threads + Async to Fetch at Scale
+
+Before we get into this step I have assuming you have your `video_ids` available. You can get video id's with various ways but I personally used `Youtube V3 API` which is official youtube API.
+
+You can access this API in [Google Cloud Console](https://console.cloud.google.com/apis/api/youtube.googleapis.com).
+
+Or you just can simply use dummy list of video id's like this for now:
+
+```python
+video_ids = ['123', '1234', '12345']
+```
+
+Python’s `asyncio.to_thread` lets you run sync code (like the transcript API) inside threads, controlled by `asyncio`.
+This will speed up fetching process **greatly** which is essential for **channels that have hundreds of videos.**
+
+Here how it is looks in python: 
+
+```python
+from concurrent.futures import ThreadPoolExecutor
+import asyncio
+
+executor = ThreadPoolExecutor(max_workers=30)
+
+async def fetch_all(video_ids: list[str]) -> list:
+    async def run(vid):
+        return await asyncio.to_thread(fetch_transcript, vid)
+    tasks = [run(v) for v in video_ids]
+    results = await asyncio.gather(*tasks)
+```
+
+This allows you to process **hundreds** of transcripts simultaneously—without blocking.
+
+---
+
+## Step 4: Avoid Getting Banned with Proxies
+
+Eventually, even with good headers, your IP will get flagged. That’s why proxies are essential for long-term, high-volume scraping.
+
+You can plug proxy support into `httpx` like this:
+
+```python
+httpx_client = httpx.Client(
+    proxies="http://username:password@proxy_ip:port",
+    headers=get_realistic_headers(),
+    timeout=10
+)
+```
+
+You can rotate proxies for each request, or use a service like:
+
+- Bright Data
+- ScraperAPI
+- Smartproxy
+- `requests-ip-rotator` (for AWS setups)
+
+This will significantly improve reliability and longevity of your fetcher.
+
+---
+
+## Step 5: Keep Output Clean With Pydantic
+
+For reliable data exchange and downstream ML tasks, use Pydantic to define your schema.
+
+```python
+from pydantic import BaseModel
+
+class FetchAndMetaResponse(BaseModel):
+    video_id: str
+    transcript: list[dict]
+```
+
+Then, wrap each result like this:
+
+```python
+from app.types.youtube import FetchAndMetaResponse # Your folder structure could be different.
+
+results = await asyncio.gather(*tasks)
+return [
+    FetchAndMetaResponse(
+        video_id=result["video_id"],
+        transcript=result["transcript"],
+    )
+    for result in results if result
+]
+```
+
+This makes your fetcher’s output robust and compatible with any future APIs or file exports (CSV, JSON, etc.).
+
+---
+
+## Full Code
+
+```python
+from concurrent.futures import ThreadPoolExecutor
+from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._errors import NoTranscriptFound, VideoUnavailable, TranscriptsDisabled, IpBlocked
+from tenacity import retry, wait_fixed, retry_if_exception_type, stop_after_attempt
+from app.types.youtube import FetchAndMetaResponse
+from app.lib.timeout import TRANSCRIPT_FETCH_TIMEOUT
+from app.lib.defenses.headers import get_realistic_headers
+from typing import Literal
+import asyncio
+import httpx
+
+headers = get_realistic_headers()
+httpx_client = httpx.Client(timeout=TRANSCRIPT_FETCH_TIMEOUT, headers=headers)
+
+# Global API and thread pool
+executor = ThreadPoolExecutor(max_workers=30)
+
+@retry(
+    retry=retry_if_exception_type(IpBlocked),
+    wait=wait_fixed(1),
+    stop=stop_after_attempt(2)
+)
+def fetch_transcript_with_snippet(video_id: str, snippet: Snippet, progress_id: str, max_results: int) -> dict | None:
+    try:
+        ytt_api = YouTubeTranscriptApi(http_client=httpx_client)
+        transcript = ytt_api.fetch(video_id).to_raw_data()
+
+        return {
+            "video_id": video_id,
+            "transcript": transcript,
+        }
+    except (NoTranscriptFound, VideoUnavailable, TranscriptsDisabled):
+        return None
+    except Exception as e:
+        print(f"⚠️ Unexpected error: {e}")
+        return None
+
+async def fetch_all_transcripts_with_metadata(video_ids: list[str], snippets: list[Snippet], progress_id: str) -> list[FetchAndMetaResponse]:
+    async def run_in_thread(vid):
+        return await asyncio.to_thread(fetch_transcript_with_snippet, v)
+
+    tasks = [run_in_thread(vid) for vid(video_ids)]
+    results = await asyncio.gather(*tasks)
+
+    return [
+        FetchAndMetaResponse(
+            video_id=result["video_id"],
+            transcript=result["transcript"],
+        )
+        for result in results if result
+    ]
+```
+
+---
+
+## Final Thoughts
+
+This setup has allowed me to fetch **tens of thousands** of transcripts from YouTube for my AI projects without getting blocked. It’s fast, safe, and extensible.
+
+To recap:
+
+- Use headers and proxies to mimic real users
+- Add retry logic for resilience
+- Use threading and async for performance
+- Structure responses using Pydantic
+
+Let me know if you'd like me to show how to integrate this with FastAPI, cache results, or export to CSV.
