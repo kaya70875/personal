@@ -1,0 +1,120 @@
+---
+title: Demystifying Higher-Order Components (HOC) in React
+description: Learn what Higher-Order Components are, how they work, and why they remain a powerful tool for abstraction and reuse in React.
+thumbnail: /blog-images/computer.png
+date: 2025-07-12
+---
+
+Higher-Order Components (HOCs) are one of the most foundational yet often misunderstood patterns in React. They allow developers to write code that is both **reusable** and **decoupled**, and they shine especially when you want to add common behavior (like logging, authentication, animation, etc.) to multiple components without modifying them directly.
+
+In this post, we’ll break down the concept of HOCs and explore a short but powerful example to solidify the idea.
+
+---
+
+## What is a Higher-Order Component?
+
+In React, a **Higher-Order Component** is a function that:
+
+- Takes in a component
+- Returns a new component with enhanced functionality
+
+This is similar to how higher-order functions work in JavaScript: they operate on other functions.
+
+Here’s a simple HOC that adds hover animation using `framer-motion`:
+
+```tsx
+export function withAnimation<P extends object>(Component: React.ComponentType<P>) {
+    return function AnimatedComponent(props: P) {
+        return (
+            <motion.div
+                whileHover={{ scale: 1.025 }}
+                transition={{ duration: 0.25 }}
+            >
+                <Component {...props} />
+            </motion.div>
+        )
+    }
+}
+```
+
+Let’s break down this code carefully:
+
+---
+
+### `withAnimation` HOC
+
+- **Name:** `withAnimation` makes the intent clear — this HOC adds animation behavior.
+- **Generic `<P extends object>`:** We’re using a generic type to ensure the wrapped component keeps its original prop types.
+- **Input:** It receives a `Component` as an argument — any React component.
+- **Output:** It returns a new functional component (`AnimatedComponent`) that wraps the original in a `<motion.div>`.
+
+---
+
+### Why Use an HOC?
+
+This approach is powerful because:
+
+- **Encapsulation**: The animation logic is kept outside the original component.
+- **Reusability**: Any component can now be wrapped and animated — no code duplication.
+- **Maintainability**: Central place to change animations or extend behavior.
+
+---
+
+### Usage
+
+Here how we can use our `HOC`
+
+```tsx
+interface CardProps {
+    data: Data;
+}
+
+function Card({ data }: CardProps) {
+    return (
+        ...
+    )
+}
+
+export const AnimatedCard = withAnimation(Card); // Here we are using our HOC
+```
+
+## Real-World Uses for HOCs
+
+While hooks are the go-to tool today, HOCs are still useful, especially for:
+
+- Conditional rendering (auth, permissions)
+- Logging
+- Theming
+- Animations
+- Error boundaries (before React 16+’s `componentDidCatch` improvements)
+
+---
+
+## HOC Naming Convention
+
+The React community follows a helpful naming rule:
+
+> “The name of the HOC should reflect the behavior it adds and always start with ‘with…’.”
+
+Examples:
+- `withLogging`
+- `withAuth`
+- `withTheme`
+- `withAnimation`
+
+This makes HOCs composable and their intent obvious at the point of use.
+
+---
+
+## A Quick Recap
+
+✅ HOCs are functions that enhance components  
+✅ They promote abstraction and reuse  
+✅ You can stack multiple HOCs for layered behaviors  
+✅ They work best when behavior is shared but state is independent
+
+---
+
+## Final Thoughts
+
+Even though hooks dominate modern React development, HOCs are still a valuable tool when you want to add cross-cutting concerns in a clean, scalable way. They help you write DRY code and follow separation of concerns — two essential pillars of maintainable software.
