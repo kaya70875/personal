@@ -16,6 +16,7 @@ import { useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { scrollToContact } from "@/utils/helpers";
 import ProjectSection from "@/components/sections/ProjectSection";
+import IconArrow from "@/svg/IconArrow";
 
 export default function Home() {
 
@@ -52,6 +53,8 @@ export default function Home() {
         </div>
 
         <Socials className="w-full mt-4" />
+        <IconArrow props={{ className: 'animate-bounce cursor-pointer hover:text-accent duration-200 ease-in', onClick: () => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' }) }} />
+
       </AnimatedSection>
 
       <ProjectSection projectsRef={projectsRef} />
