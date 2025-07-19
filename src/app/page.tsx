@@ -43,11 +43,11 @@ export default function Home() {
         </header>
         <h1 className="max-w-2xl">Hi, I am <span className="text-accent">Ahmet. </span>I build things for the web.</h1>
         <Typewriter text="Full-Stack Developer | React | Next.js | FastAPI" />
-        <h3 className="max-w-3xl 2xl:max-w-4xl">I turn ideas into code and write about my journey as a developer. Let’s build something cool!</h3>
+        <h3 className="max-w-3xl 2xl:max-w-4xl">I build scalable web apps and write about Python & React.js</h3>
         <div className="flex items-center gap-8 sm:gap-16 justify-center w-full">
-          <Button onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' })} className="w-36 sm:w-48 hover:opacity-80">View My Work</Button>
+          <Button onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' })} className="w-36 sm:w-48 hover:opacity-80">Explore Projects</Button>
           <Link href={'/blog'}>
-            <Button className="w-36 sm:w-48" variant="secondary">See My Blog</Button>
+            <Button className="w-36 sm:w-48" variant="secondary">Read Blog</Button>
           </Link>
         </div>
 
