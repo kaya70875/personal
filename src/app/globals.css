@@ -55,12 +55,17 @@ h3 {
 
 @layer utilities {
   .section-header {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.25rem;
+    font-weight: bolder;
   }
 
   .line {
     height: 1px;
+    opacity: 0.8;
+  }
+
+  .header-line {
+    height: 4px;
     opacity: 0.8;
   }
 
