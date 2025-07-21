@@ -45,7 +45,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <ImageModalProvider>
-            <div className="bg-bg dark:bg-dark-bg flex flex-col sections-gap min-h-screen default-container relative">
+            <div className="bg-bg dark:bg-dark-bg flex flex-col sections-gap min-h-screen relative">
               <Navbar />
               {children}
               <Analytics />
