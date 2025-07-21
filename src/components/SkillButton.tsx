@@ -16,17 +16,17 @@ export default function SkillButton({ name, icon }: SkillButtonProps) {
         <motion.button
             onHoverStart={() => setBorderSize(56)}
             onHoverEnd={() => setBorderSize(0)}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.25 }}
             className='flex flex-col items-center justify-center gap-2 cursor-pointer p-3 bg-bg shadow-lg rounded-lg text-text font-medium'>
             <div className='flex items-center gap-2'>
                 <div className="icon">
-                    <Image src={icon} alt='sk' />
+                    <Image src={icon} alt='skill-button-img' />
                 </div>
                 <p>{name}</p>
             </div>
 
-            <motion.div className='bg-text h-[2px]' initial={{ width: 0 }} animate={{ width: borderSize }} transition={{
+            <motion.div className='bg-primary h-[1.5px] absolute bottom-[0.4rem]' initial={{ width: 0 }} animate={{ width: borderSize }} transition={{
                 duration: 0.3,
                 ease: "easeInOut"
             }} />
