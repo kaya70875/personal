@@ -9,6 +9,7 @@ import financeImg from '../../../public/images/finance.png';
 import noteImg from '../../../public/images/note.png';
 import { useModal } from '@/context/ImageModalContext'
 import { AnimatePresence } from 'motion/react'
+import Header from '../reusables/Header'
 
 interface ProjectSectionProps {
     projectsRef: React.RefObject<HTMLElement | null>
@@ -62,8 +63,8 @@ export default function ProjectSection({ projectsRef }: ProjectSectionProps) {
     ] as const;
 
     return (
-        <AnimatedSection ref={projectsRef} className="projects flex flex-col gap-8 scroll-mt-[84px]">
-            <header className="section-header">Projects</header>
+        <AnimatedSection ref={projectsRef} className="projects flex flex-col scroll-mt-[84px]">
+            <Header name='Featured Projects' />
             <div className="project-cards grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12">
                 {PROJECTS.map((project, index) => (
                     <AnimatedBorderCard key={index} prime={project.prime}>

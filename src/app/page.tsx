@@ -17,6 +17,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { scrollToContact } from "@/utils/helpers";
 import ProjectSection from "@/components/sections/ProjectSection";
 import IconArrow from "@/svg/IconArrow";
+import SkillCategoryCard from "@/components/SkillCategoryCard";
+import Header from "@/components/reusables/Header";
 
 export default function Home() {
 
@@ -24,6 +26,8 @@ export default function Home() {
   const searchParams = useSearchParams();
 
   const projectsRef = useRef<HTMLElement | null>(null);
+
+  const skillCategories = ['frontend', 'backend', 'tools']
 
   // This useEffects checks for params contact for if we should scroll down to bottom or not for coming other pages besides home.
   useEffect(() => {
@@ -59,17 +63,17 @@ export default function Home() {
 
       <ProjectSection projectsRef={projectsRef} />
 
-      <AnimatedSection className="skills flex flex-col gap-8">
-        <header className="section-header">Skills</header>
-        <div className="skill-buttons grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {SKILLS.map((skill, index) => (
-            <SkillButton name={skill.name} icon={skill.icon} key={index} />
+      <AnimatedSection className="skills flex flex-col">
+        <Header name="Skills" />
+        <div className="grid grid-cols-1 md:grid-cols-2 place-items-center w-full gap-4">
+          {skillCategories.map((category, idx) => (
+            <SkillCategoryCard category={category} key={idx} />
           ))}
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="about flex flex-col gap-8">
-        <header className="section-header">About Me</header>
+      <AnimatedSection className="about flex flex-col">
+        <Header name="About Me" />
         <div className="p-4 sm:p-8 w-full flex flex-col gap-8 shadow-lg rounded-lg bg-white dark:bg-dark-primary text-text dark:text-dark-text opacity-90 tracking-wider leading-loose">
           <header className="font-bold text-xl">Hey there 🖐</header>
           <p>I’m Ahmet, a developer passionate about transforming ideas into reality through code. Whether it’s building sleek UIs, optimizing performance, or diving into new technologies, I’m always up for a challenge.</p>
@@ -85,8 +89,8 @@ export default function Home() {
       </AnimatedSection>
 
       <div className="contact scroll-mt-[84px]">
-        <AnimatedSection className="flex flex-col gap-8">
-          <header className="section-header">Contact</header>
+        <AnimatedSection className="flex flex-col">
+          <Header name="Get In Touch" />
           <div className="flex w-full flex-col-reverse lg:flex-row lg:flex-1 gap-8">
             <ContactInfoCard />
             <SendMessageCard />
