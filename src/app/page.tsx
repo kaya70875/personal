@@ -40,7 +40,7 @@ export default function Home() {
   }, [router, searchParams])
 
   return (
-    <main className="flex flex-col sections-gap mx-0 2xl:mx-24 navbar-space text-text dark:text-dark-text">
+    <main className="flex flex-col navbar-space text-text dark:text-dark-text">
       <AnimatedSection className="hero flex flex-col gap-8 items-center justify-center text-center relative z-10">
         <div className="glow-container glow-dark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-20" />
         <header>
@@ -72,7 +72,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="about flex flex-col">
+      <AnimatedSection className="about flex flex-col" highlight>
         <Header name="About Me" />
         <div className="p-4 sm:p-8 w-full flex flex-col gap-8 shadow-lg rounded-lg bg-white dark:bg-dark-primary text-text dark:text-dark-text opacity-90 tracking-wider leading-loose">
           <header className="font-bold text-xl">Hey there 🖐</header>
