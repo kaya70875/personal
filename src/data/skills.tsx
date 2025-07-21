@@ -17,63 +17,78 @@ import redisIconSvg from "../../public/svg/redis.svg"
 export const SKILLS = [
     {
         name: 'React',
-        icon: reactIconSVG
+        icon: reactIconSVG,
+        category: 'frontend'
     },
     {
         name: 'Typescript',
-        icon: typescriptIconSVG
+        icon: typescriptIconSVG,
+        category: 'frontend'
     },
     {
         name: 'Next JS',
-        icon: nextIconSVG
+        icon: nextIconSVG,
+        category: 'frontend'
     },
     {
         name: 'Python',
-        icon: pythonIconSVG
+        icon: pythonIconSVG,
+        category: 'tools'
     },
     {
         name: 'MongoDB',
-        icon: mongoIconSVG
+        icon: mongoIconSVG,
+        category: 'backend'
     },
     {
         name: 'Fast API',
-        icon: fastapibaseIconSVG
+        icon: fastapibaseIconSVG,
+        category: 'backend'
     },
     {
         name: 'Redis',
-        icon: redisIconSvg
+        icon: redisIconSvg,
+        category: 'backend'
     },
     {
         name: 'Manifest',
-        icon: manifestIconSVG
+        icon: manifestIconSVG,
+        category: 'tools'
     },
     {
         name: 'Tailwind',
-        icon: tailwindIconSVG
+        icon: tailwindIconSVG,
+        category: 'frontend'
     },
     {
         name: 'SCSS',
-        icon: scssIconSVG
+        icon: scssIconSVG,
+        category: 'frontend'
     },
     {
         name: 'Firebase',
-        icon: firebaseIconSVG
+        icon: firebaseIconSVG,
+        category: 'backend'
     },
     {
         name: 'Figma',
-        icon: figmaIconSvg
+        icon: figmaIconSvg,
+        category: 'tools'
     },
     {
         name: 'Motion',
-        icon: motionIconSvg
+        icon: motionIconSvg,
+        category: 'frontend'
     },
     {
         name: 'Selenium',
-        icon: seleniumIconSvg
+        icon: seleniumIconSvg,
+        category: 'tools'
     },
     {
         name: 'Jest',
-        icon: jestIconSvg
+        icon: jestIconSvg,
+        category: 'tools'
     }
 
 
