@@ -40,7 +40,7 @@ export default function ProjectCard({ name, image, desc, link }: ProjectCardProp
                 <p className='text-text dark:text-dark-text opacity-90 font-light'>{desc}</p>
             </div>
 
-            <div className="flex items-center justify-center gap-8 lg:gap-12 lg:md-8 w-full sm:flex-row">
+            <div className="flex items-center justify-center gap-8 lg:gap-12 lg:md-8 w-full">
                 <Link href={link.live} target='__blank'>
                     <Button className={projectButtonStyles}>View Live</Button>
                 </Link>

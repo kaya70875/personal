@@ -65,7 +65,7 @@ export default function ProjectSection({ projectsRef }: ProjectSectionProps) {
     return (
         <AnimatedSection ref={projectsRef} className="projects flex flex-col scroll-mt-[84px]" highlight>
             <Header name='Featured Projects' />
-            <div className="project-cards grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12">
+            <div className="project-cards grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-12">
                 {PROJECTS.map((project, index) => (
                     <AnimatedBorderCard key={index} prime={project.prime}>
                         <ProjectCard link={project.link} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
