@@ -39,7 +39,7 @@ export default function Navbar() {
     }
 
     return (
-        <nav className='flex w-full items-center justify-between fixed top-0 left-0 default-container shadow-xl z-30 backdrop-blur-sm'>
+        <nav className='flex w-full items-center justify-between fixed top-0 left-0 px-[20px] md:px-[80px] xl:px-[150px] 2xl:px-[250px] py-4 md:py-6 shadow-xl z-30 backdrop-blur-sm'>
             <header>
                 <h2 className='text-text dark:text-dark-text'>ahmetky.Dev</h2>
             </header>
