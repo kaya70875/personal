@@ -50,7 +50,7 @@ export default function Home() {
         <Typewriter text="Full-Stack Developer | React | Next.js | FastAPI" />
         <h3 className="max-w-3xl 2xl:max-w-4xl">I build scalable web apps and write about Python & React.js</h3>
         <div className="flex items-center gap-8 sm:gap-16 justify-center w-full">
-          <Button onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' })} className="w-36 sm:w-48 hover:opacity-80">Explore Projects</Button>
+          <Button onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'end' })} className="w-36 sm:w-48 hover:opacity-80">See Projects</Button>
           <Link href={'/blog'}>
             <Button className="w-36 sm:w-48" variant="secondary">Read Blog</Button>
           </Link>
