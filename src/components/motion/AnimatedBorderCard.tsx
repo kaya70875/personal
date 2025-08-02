@@ -23,7 +23,7 @@ export default function AnimatedBorderCard({ prime = false, children }: Animated
 
   return (
     <motion.div className='relative w-full max-w-lg' whileHover={{ scale: 1.025 }} transition={{ duration: 0.25 }}>
-      <div className='relative bg-bg dark:bg-dark-bg p-8 w-full z-10 h-full rounded-lg text-text dark:text-dark-text'>
+      <div className='relative bg-bg dark:bg-dark-bg p-3 md:p-8 w-full z-10 h-full rounded-lg text-text dark:text-dark-text'>
         {children}
       </div>
       <motion.div style={{
