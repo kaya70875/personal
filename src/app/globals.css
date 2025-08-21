@@ -68,6 +68,10 @@ h3 {
     opacity: 0.8;
   }
 
+  .card-border {
+    @apply border border-gray-300 dark:border-gray-700;
+  }
+
   .glow-dark {
     width: 0px;
     height: 0px;
