@@ -5,8 +5,6 @@ import Button from "@/components/Button";
 import myImage from '../../public/images/headshot.png';
 import Image from "next/image";
 import { Typewriter } from "@/components/motion/Typewriter";
-import SkillButton from "@/components/SkillButton";
-import { SKILLS } from "@/data/skills";
 import ContactInfoCard from "@/components/contact/ContactInfoCard";
 import Socials from "@/components/Socials";
 import SendMessageCard from "@/components/contact/SendMessageCard";
