@@ -44,7 +44,7 @@ export default function SendMessageCard() {
             {/* Initialize Toaster */}
             <Toaster />
 
-            <h3>Send me a message</h3>
+            <h2>Send me a message</h2>
             <div className='flex flex-col md:flex-row items-center gap-4 w-full'>
                 <InputField label='Name' placeholder='Your Name' onChange={(e) => setForm({ ...form, name: e.target.value })} />
                 <InputField label='Email' placeholder='Your Email' onChange={(e) => setForm({ ...form, email: e.target.value })} />
