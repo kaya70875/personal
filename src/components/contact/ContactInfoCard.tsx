@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdEmail, MdLocationOn, MdOutlineCoffee } from 'react-icons/md';
+import { MdDensityMedium, MdEmail, MdLocationOn, MdOutlineCoffee, MdOutlineDensityMedium } from 'react-icons/md';
 import Socials from '../Socials';
 import Link from 'next/link';
 
@@ -20,9 +20,10 @@ export default function ContactInfoCard() {
 
     return (
         <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full lg:w-1/2 border border-gray-300 dark:border-gray-700'>
-            <h3>Contact Information</h3>
+            <h2>Contact Information</h2>
             {contactInfo.map((info, index) => (
-                <div key={index} className="info flex items-center gap-6">
+                <div key={index} className="info flex items-center gap-4">
+                    <div className="bg-accent w-[2.5px] h-[80%]"></div>
                     <div className="icon">{info.icon}</div>
                     <div className='flex flex-col gap-2'>
                         <p>{info.name}</p>
@@ -30,10 +31,9 @@ export default function ContactInfoCard() {
                     </div>
                 </div>
             ))}
-            <div className="line w-full text-text dark:text-dark-text" />
+            <div className="line w-full card-border" />
             <h2>Socials</h2>
             <Socials gap='gap-4' />
-            <div className="line w-full" />
 
             <Link href={'https://buymeacoffee.com/kaya70875'} target='__blank' className='bg-accent text-text p-3 w-48 rounded-lg font-medium flex items-center gap-2 cursor-pointer hover:opacity-80 transition-all ease-in duration-200'>
                 <MdOutlineCoffee size={24} color='var(--color-text)' />
