@@ -11,7 +11,7 @@ export default function InputField({ label = '', className, placeholder, onChang
     return (
         <div className='flex flex-col gap-2 w-full'>
             {label && <label htmlFor={label}>{label}</label>}
-            <input type="text" onChange={onChange} className={`py-1 px-3 border border-text dark:border-dark-text rounded-lg ${className}`} placeholder={placeholder} id={label} />
+            <input type="text" onChange={onChange} className={`py-2 px-3 card-border rounded-lg ${className}`} placeholder={placeholder} id={label} />
         </div>
     )
 }
