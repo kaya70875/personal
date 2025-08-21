@@ -65,7 +65,7 @@ export default function Home() {
 
       <AnimatedSection className="skills flex flex-col">
         <Header name="Skills" />
-        <div className="grid grid-cols-1 md:grid-cols-2 place-items-center w-full gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 place-items-center w-full gap-4 default-container">
           {skillCategories.map((category, idx) => (
             <SkillCategoryCard category={category} key={idx} />
           ))}

@@ -25,7 +25,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className='w-full bg-text p-2 lg:p-8 flex flex-col gap-4'>
+        <footer className='w-full p-2 lg:p-8 flex flex-col gap-4 bg-primary border-y border-gray-700'>
             <div className='default-container text-white flex flex-col sm:flex-row justify-center lg:justify-around gap-4 lg:gap-0'>
                 <section className="contact-info flex flex-col gap-8">
                     <p>Contact Info</p>
@@ -55,11 +55,6 @@ export default function Footer() {
                     <Socials gap='gap-4' className='!text-white' />
                 </section>
             </div>
-            <section className="copyw flex flex-col gap-4 items-center justify-center w-full">
-                <div className="line w-full flex items-center justify-center !bg-white" />
-                <p className='text-white font-semibold'>@ 2025 ahmetky.dev</p>
-            </section>
-
         </footer>
     )
 }
