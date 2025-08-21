@@ -22,7 +22,7 @@ export default function AnimatedSection({ className, children, ref, highlight }:
 
     return (
         <SectionBackgroundWrapper className={`${highlight ? 'bg-gray-200 dark:bg-primary border-t border-b border-gray-400 dark:border-gray-700' : ''}`}>
-            <motion.section ref={ref} className={`${className} mx-0 2xl:mx-24 default-container`} {...fadeInUp}>
+            <motion.section ref={ref} className={`${className} px-0 2xl:px-24 default-container`} {...fadeInUp}>
                 {children}
             </motion.section>
         </SectionBackgroundWrapper>
