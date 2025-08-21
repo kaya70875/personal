@@ -19,7 +19,7 @@ export default function ContactInfoCard() {
     ] as const;
 
     return (
-        <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full lg:w-1/2'>
+        <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full lg:w-1/2 border border-gray-300 dark:border-gray-700'>
             <h3>Contact Information</h3>
             {contactInfo.map((info, index) => (
                 <div key={index} className="info flex items-center gap-6">

@@ -40,7 +40,7 @@ export default function SendMessageCard() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full'>
+        <form onSubmit={handleSubmit} className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full border border-gray-300 dark:border-gray-700'>
             {/* Initialize Toaster */}
             <Toaster />
 
