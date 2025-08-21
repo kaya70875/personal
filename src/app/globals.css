@@ -12,9 +12,8 @@
 }
 
 h1 {
-  font-size: clamp(2rem, 10vw, 3rem);
+  font-size: clamp(1.5rem, 10vw, 3rem);
   font-weight: bold;
-
 }
 
 h2 {
