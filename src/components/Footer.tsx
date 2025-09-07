@@ -1,7 +1,7 @@
 import React from 'react'
-import { MdEmail, MdLocationOn } from 'react-icons/md'
 import NavLink from './NavLink'
 import Socials from './Socials'
+import { Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
 
@@ -31,11 +31,11 @@ export default function Footer() {
                     <p>Contact Info</p>
                     <div className='flex flex-col gap-4'>
                         <div className='flex items-center gap-2'>
-                            <MdEmail size={24} color='white' />
+                            <Mail size={24} color='white' />
                             <p>kaya70875@gmail.com</p>
                         </div>
                         <div className='flex items-center gap-2'>
-                            <MdLocationOn size={24} color='white' />
+                            <MapPin size={24} color='white' />
                             <p>Remote / Available Worlwide</p>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
-import { MdDensityMedium, MdEmail, MdLocationOn, MdOutlineCoffee, MdOutlineDensityMedium } from 'react-icons/md';
 import Socials from '../Socials';
 import Link from 'next/link';
+import { Coffee, Mail, MapPin } from 'lucide-react';
 
 export default function ContactInfoCard() {
 
@@ -9,12 +9,12 @@ export default function ContactInfoCard() {
         {
             name: 'Email',
             value: 'kaya70875@gmail.com',
-            icon: <MdEmail size={24} className='text-text dark:text-dark-text' />
+            icon: <Mail size={24} className='text-text dark:text-dark-text' />
         },
         {
             name: 'Location',
             value: 'Istanbul, Turkey',
-            icon: <MdLocationOn size={24} className='text-text dark:text-dark-text' />
+            icon: <MapPin size={24} className='text-text dark:text-dark-text' />
         }
     ] as const;
 
@@ -36,7 +36,7 @@ export default function ContactInfoCard() {
             <Socials gap='gap-4' />
 
             <Link href={'https://buymeacoffee.com/kaya70875'} target='__blank' className='bg-accent text-text p-3 w-48 rounded-lg font-medium flex items-center gap-2 cursor-pointer hover:opacity-80 transition-all ease-in duration-200'>
-                <MdOutlineCoffee size={24} color='var(--color-text)' />
+                <Coffee size={24} color='var(--color-text)' />
                 <p>Buy me a coffee</p>
             </Link>
         </div>

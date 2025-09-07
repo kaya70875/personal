@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react'
 import NavLink from './NavLink';
-import { MdMenu } from 'react-icons/md';
 import MobileNav from './mobile/MobileNav';
 import { useScrollNavigation } from '@/hooks/useScroll';
 import ThemeChanger from './reusables/ThemeChanger';
 import Link from 'next/link';
+import { Menu } from 'lucide-react';
 
 export default function Navbar() {
 
@@ -59,7 +59,7 @@ export default function Navbar() {
             <MobileNav open={open} setOpen={setOpen} navLinks={navLinks} />
 
             <div className='flex md:hidden items-center gap-4'>
-                <MdMenu onClick={() => setOpen((prev) => !prev)} className='block md:hidden text-text dark:text-dark-text' size={24} />
+                <Menu onClick={() => setOpen((prev) => !prev)} className='block md:hidden text-text dark:text-dark-text' size={24} />
                 <ThemeChanger />
             </div>
 
