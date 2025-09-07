@@ -6,7 +6,7 @@ import MobileNav from './mobile/MobileNav';
 import { useScrollNavigation } from '@/hooks/useScroll';
 import ThemeChanger from './reusables/ThemeChanger';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Download, Menu } from 'lucide-react';
 
 export default function Navbar() {
 
@@ -47,10 +47,10 @@ export default function Navbar() {
                 </Link>
             </header>
 
-            <ul className='nav-items hidden md:flex items-center gap-8 text-text dark:text-dark-text cursor-pointer'>
+            <ul className='nav-items hidden md:flex items-center gap-10 text-text dark:text-dark-text cursor-pointer'>
                 {navLinks?.map((link, index) => (
                     <li key={index}>
-                        <NavLink onClick={(e) => handleClick(e!, link.name)} href={link.url}>{link.name}</NavLink>
+                        <NavLink onClick={(e) => handleClick(e!, link.name)} href={link.url}>{link.name == 'Resume' ? (<div className='flex items-center gap-2'>{link.name} <Download className='w-4 h-4' /></div>) : link.name}</NavLink>
                     </li>
                 ))}
                 <ThemeChanger />
