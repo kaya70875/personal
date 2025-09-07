@@ -1,13 +1,13 @@
 import React from 'react'
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary';
     children: React.ReactNode;
     onClick?: () => void;
     className?: string;
 }
 
-export default function Button({ variant = 'primary', children, onClick, className }: ButtonProps) {
+export default function Button({ variant = 'primary', children, onClick, className, ...props }: ButtonProps) {
 
     const baseStyles = 'px-4 py-2 sm:py-3 rounded-lg cursor-pointer font-[600] transition duration-300 ease-in-out whitespace-nowrap';
 
@@ -17,7 +17,7 @@ export default function Button({ variant = 'primary', children, onClick, classNa
     }
 
     return (
-        <button onClick={onClick} className={`${baseStyles} ${variants[variant]} ${className}`}>
+        <button onClick={onClick} {...props} className={`${baseStyles} ${variants[variant]} ${className}`}>
             {children}
         </button>
     )
