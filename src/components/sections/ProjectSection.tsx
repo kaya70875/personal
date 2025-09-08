@@ -63,13 +63,11 @@ export default function ProjectSection({ projectsRef }: ProjectSectionProps) {
     ] as const;
 
     return (
-        <AnimatedSection ref={projectsRef} className="projects flex flex-col scroll-mt-[84px]" highlight>
+        <AnimatedSection ref={projectsRef} className="projects flex flex-col items-center justify-center scroll-mt-[84px]" highlight>
             <Header name='Featured Projects' />
-            <div className="project-cards grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-12 default-container">
+            <div className="project-cards grid grid-cols-1 lg:grid-cols-2 max-w-6xl gap-4">
                 {PROJECTS.map((project, index) => (
-                    <AnimatedBorderCard key={index} prime={project.prime}>
-                        <ProjectCard link={project.link} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
-                    </AnimatedBorderCard>
+                    <ProjectCard link={project.link} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
                 ))}
             </div>
             <AnimatePresence mode='wait'>

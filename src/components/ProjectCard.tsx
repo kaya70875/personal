@@ -33,9 +33,9 @@ export default function ProjectCard({ name, image, desc, link }: ProjectCardProp
     }
 
     return (
-        <div className="flex flex-col justify-between h-full items-center gap-8">
-            <div className='flex flex-col gap-8 items-center'>
-                <header className='font-bold text-xl md:text-2xl text-text dark:text-dark-text uppercase'>{name}</header>
+        <div className="flex flex-col justify-between h-full bg-gradient-to-br from-gray-900 to-[#0a1122] items-center gap-8 p-6 rounded-lg border border-opacity-30 border-gray-700 transition-all duration-300 hover:border-yellow-400/50 hover:shadow-[0_0_15px_rgba(250,204,21,0.15)] hover:-translate-y-1">
+            <div className='flex flex-col gap-6 items-center'>
+                <header className='font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-400 uppercase w-full text-start'>{name}</header>
                 <Image onClick={handleImageClick} className='rounded-lg cursor-pointer' src={image.src} width={image.width ?? 500} height={image.height ?? 500} alt='project' />
                 <p className='text-text dark:text-dark-text opacity-90 font-light'>{desc}</p>
             </div>
@@ -48,8 +48,6 @@ export default function ProjectCard({ name, image, desc, link }: ProjectCardProp
                     <Button className={projectButtonStyles} variant="secondary">Github</Button>
                 </Link>
             </div>
-
-
         </div>
 
     )
