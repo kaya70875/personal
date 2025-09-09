@@ -32,7 +32,7 @@ export default function ProjectSection({ projectsRef }: ProjectSectionProps) {
         },
         {
             name: 'youtubetranscriptai',
-            desc: 'YouTubeTranscriptAI solves the time-consuming problem of gathering and structuring large-scale transcript data from YouTube. Whether you are building a dataset for a machine learning model, analyzing trends across videos, or simply need raw transcripts for content processing — this tool handles it, fast.',
+            desc: 'YouTubeTranscriptAI quickly gathers and structures large-scale YouTube transcripts — perfect for datasets, trend analysis, or content processing.',
             image: youtubetranscriptImg,
             prime: true,
             link: {
@@ -65,7 +65,7 @@ export default function ProjectSection({ projectsRef }: ProjectSectionProps) {
     return (
         <AnimatedSection ref={projectsRef} className="projects flex flex-col items-center justify-center scroll-mt-[84px]" highlight>
             <Header name='Featured Projects' />
-            <div className="project-cards grid grid-cols-1 lg:grid-cols-2 max-w-6xl gap-4">
+            <div className="project-cards grid grid-cols-1 lg:grid-cols-2 max-w-6xl gap-8">
                 {PROJECTS.map((project, index) => (
                     <ProjectCard link={project.link} name={project.name} desc={project.desc} image={{ src: project.image }} key={index} />
                 ))}
