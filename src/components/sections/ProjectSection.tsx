@@ -63,7 +63,7 @@ export default function ProjectSection({ projectsRef }: ProjectSectionProps) {
     ] as const;
 
     return (
-        <AnimatedSection ref={projectsRef} className="projects flex flex-col items-center justify-center scroll-mt-[84px]" highlight>
+        <AnimatedSection ref={projectsRef} className="projects flex flex-col items-center justify-center scroll-mt-[84px]">
             <Header name='Featured Projects' />
             <div className="project-cards grid grid-cols-1 lg:grid-cols-2 max-w-6xl gap-8">
                 {PROJECTS.map((project, index) => (
