@@ -42,17 +42,17 @@ export default function AboutSection() {
     )
 }
 
-function AboutCard({icon, title, desc} : AboutCard) {
+function AboutCard({ icon, title, desc }: AboutCard) {
     return (
-        <div className="bg-[#0f172a] p-6 rounded-lg border border-gray-800 hover:border-yellow-400/30 transition-colors flex flex-col items-center md:items-start gap-3">
-                  <div className="text-yellow-400">
-                    {icon}
-                  </div>
-                  <header className="text-xl font-semibold">{title}</header>
-                  <p className="text-gray-300">
-                    {desc}
-                  </p>
+        <div className="bg-gray-200 dark:bg-[#0f172a] p-6 rounded-lg border border-gray-400 dark:border-gray-800 hover:border-accent transition-colors flex flex-col items-center md:items-start gap-3">
+            <div className="text-primary dark:text-yellow-400">
+                {icon}
             </div>
+            <header className="text-xl font-semibold">{title}</header>
+            <p className="text-primary dark:text-gray-300">
+                {desc}
+            </p>
+        </div>
     )
 }
 
@@ -60,24 +60,24 @@ function AboutDescription() {
     return (
         <section className="about-desc text-text dark:text-white opacity-80 font-light max-w-xl">
             <p>
-              I'm a passionate Full Stack Developer with expertise in building
-            modern web applications.
+                I'm a passionate Full Stack Developer with expertise in building
+                modern web applications.
             </p>
             <br />
             <p>
-              With a strong foundation in both front-end
-            and back-end technologies, I create seamless, user-friendly
-            experiences that solve real-world problems.
+                With a strong foundation in both front-end
+                and back-end technologies, I create seamless, user-friendly
+                experiences that solve real-world problems.
             </p>
             <br />
             <p>
-              My journey in software
-            development began over 5 years ago, and since then, I've worked on a
-            variety of projects ranging from small business websites to complex
-            enterprise applications. When I'm not coding, you can find me
-            exploring new technologies, contributing to open-source projects, or
-            sharing my knowledge through blog posts and tutorials.
+                My journey in software
+                development began over 5 years ago, and since then, I've worked on a
+                variety of projects ranging from small business websites to complex
+                enterprise applications. When I'm not coding, you can find me
+                exploring new technologies, contributing to open-source projects, or
+                sharing my knowledge through blog posts and tutorials.
             </p>
-          </section>
+        </section>
     )
 }
