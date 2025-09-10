@@ -90,9 +90,9 @@ export default function Home() {
       
       <ProjectSection projectsRef={projectsRef} />
 
-      <AnimatedSection className="skills flex flex-col" highlight>
+      <AnimatedSection className="skills flex flex-col items-center justify-center" highlight>
         <Header name="Skills" />
-        <div className="grid grid-cols-1 md:grid-cols-2 place-items-center w-full gap-4 default-container">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
           {skillCategories.map((category, idx) => (
             <SkillCategoryCard category={category} key={idx} />
           ))}
