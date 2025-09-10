@@ -58,25 +58,28 @@ function AboutCard({ icon, title, desc }: AboutCard) {
 
 function AboutDescription() {
     return (
-        <section className="about-desc text-text dark:text-white opacity-80 font-light max-w-xl">
+        <section className="about-desc text-text dark:text-white opacity-80 font-light max-w-xl leading-7 space-y-4">
             <p>
-                I'm a passionate Full Stack Developer with expertise in building
-                modern web applications.
+                I’m Ahmet, a <span className="font-medium">Full Stack Developer </span>
+                passionate about building tools that make learning and productivity more accessible.
             </p>
-            <br />
+
             <p>
-                With a strong foundation in both front-end
-                and back-end technologies, I create seamless, user-friendly
-                experiences that solve real-world problems.
+                My main stack is <span className="font-medium">Next.js, TypeScript, and Tailwind </span>
+                on the front end, combined with <span className="font-medium">FastAPI, MongoDB, and PostgreSQL </span>
+                on the back end. I enjoy turning ideas into scalable, real-world applications.
             </p>
-            <br />
+
             <p>
-                My journey in software
-                development began over 5 years ago, and since then, I've worked on a
-                variety of projects ranging from small business websites to complex
-                enterprise applications. When I'm not coding, you can find me
-                exploring new technologies, contributing to open-source projects, or
-                sharing my knowledge through blog posts and tutorials.
+                I’ve worked on projects like <span className="font-medium">LearnWithArticles</span>, an English
+                learning platform, and <span className="font-medium">YouTube Transcript AI</span>, a tool for
+                transcript collection and ML dataset creation. Open-source contributions are also an important part
+                of my journey.
+            </p>
+
+            <p>
+                Beyond coding, you’ll often find me exploring new technologies, practicing fingerstyle guitar,
+                or writing to share what I learn with others.
             </p>
         </section>
     )
