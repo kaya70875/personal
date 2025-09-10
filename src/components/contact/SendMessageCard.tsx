@@ -38,10 +38,10 @@ export default function SendMessageCard() {
         toast.success('Message sended successfully.');
     }
 
-    const inputStyles = 'bg-primary hover:border-gray-300 focus:border-accent transition-all duration-100 ease-in outline-none';
+    const inputStyles = 'bg-gray-300 dark:bg-primary hover:border-gray-300 focus:border-accent transition-all duration-100 ease-in outline-none';
 
     return (
-        <form onSubmit={handleSubmit} className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full card-border bg-[#0C1223]'>
+        <form onSubmit={handleSubmit} className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full card-border bg-gray-200 dark:bg-[#0C1223]'>
             {/* Initialize Toaster */}
             <Toaster />
 
