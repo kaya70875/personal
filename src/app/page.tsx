@@ -18,6 +18,7 @@ import SkillCategoryCard from "@/components/SkillCategoryCard";
 import Header from "@/components/reusables/Header";
 import { ArrowDown, UserIcon } from "lucide-react";
 import AboutSection from "@/components/sections/AboutSection";
+import CollaborationCard from "@/components/contact/CollaborationCard";
 
 export default function Home() {
   const router = useRouter();
@@ -87,7 +88,7 @@ export default function Home() {
         <Header name="About Me" />
         <AboutSection />
       </AnimatedSection>
-      
+
       <ProjectSection projectsRef={projectsRef} />
 
       <AnimatedSection className="skills flex flex-col items-center justify-center" highlight>
@@ -100,12 +101,15 @@ export default function Home() {
       </AnimatedSection>
 
 
-      <div className="contact scroll-mt-[84px]">
-        <AnimatedSection className="flex flex-col">
-          <Header name="Get In Touch" />
-          <div className="flex w-full flex-col-reverse lg:flex-row lg:flex-1 gap-8">
-            <ContactInfoCard />
+      <div className="contact scroll-mt-[84px] flex justify-center w-full">
+        <AnimatedSection className="flex flex-col w-full">
+          <Header name="Get In Touch" desc="I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you!" />
+          <div className="flex flex-col lg:flex-row gap-4 w-full">
             <SendMessageCard />
+            <div className="flex flex-col gap-4 w-full max-w-full md:max-w-3xl">
+              <ContactInfoCard />
+              <CollaborationCard />
+            </div>
           </div>
         </AnimatedSection>
       </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import Socials from '../Socials';
-import Link from 'next/link';
-import { Coffee, Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 
 export default function ContactInfoCard() {
 
@@ -19,7 +18,7 @@ export default function ContactInfoCard() {
     ] as const;
 
     return (
-        <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full lg:w-1/2 card-border'>
+        <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full card-border bg-[#0C1223]'>
             <h2>Contact Information</h2>
             {contactInfo.map((info, index) => (
                 <div key={index} className="info flex items-center gap-4">
@@ -34,11 +33,6 @@ export default function ContactInfoCard() {
             <div className="line w-full card-border" />
             <h2>Socials</h2>
             <Socials gap='gap-4' />
-
-            <Link href={'https://buymeacoffee.com/kaya70875'} target='__blank' className='bg-accent text-text p-3 w-48 rounded-lg font-medium flex items-center gap-2 cursor-pointer hover:opacity-80 transition-all ease-in duration-200'>
-                <Coffee size={24} color='var(--color-text)' />
-                <p>Buy me a coffee</p>
-            </Link>
         </div>
     )
 }
