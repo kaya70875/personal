@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export default function Header({ name }: HeaderProps) {
     return (
-        <div className='flex flex-col w-full items-center mb-24'>
+        <div className='flex flex-col w-full items-center mb-16'>
             <header className='section-header text-center'>
                 {name}
             </header>
