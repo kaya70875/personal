@@ -1,59 +1,79 @@
 import React from 'react'
-import NavLink from './NavLink'
-import Socials from './Socials'
-import { Mail, MapPin } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, Mail, MailIcon } from 'lucide-react';
 
 export default function Footer() {
-
-    const navLinks = [
-        {
-            name: 'Home',
-            url: '/'
-        },
-        {
-            name: 'Resume',
-            url: '/resume'
-        },
-        {
-            name: 'Blog',
-            url: '/blog'
-        },
-        {
-            name: 'Contact',
-            url: '/contact'
-        },
-    ];
-
     return (
-        <footer className='w-full p-2 lg:p-8 flex flex-col gap-4 bg-primary border-y border-gray-700'>
-            <div className='default-container text-white flex flex-col sm:flex-row justify-center lg:justify-around gap-4 lg:gap-0'>
-                <section className="contact-info flex flex-col gap-8">
-                    <p>Contact Info</p>
-                    <div className='flex flex-col gap-4'>
-                        <div className='flex items-center gap-2'>
-                            <Mail size={24} color='white' />
-                            <p>kaya70875@gmail.com</p>
+        <footer className="bg-[#080c17] py-12 px-4 border-t border-gray-800">
+            {/* TODO: refactor this footer component later. */}
+            <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <a href="#" className="flex items-center gap-2 mb-6 md:mb-0">
+                        <div className="w-10 h-10 bg-gradient-to-br from-accent to-yellow-600 rounded-lg flex items-center justify-center font-bold text-gray-900">
+                            A
                         </div>
-                        <div className='flex items-center gap-2'>
-                            <MapPin size={24} color='white' />
-                            <p>Remote / Available Worlwide</p>
-                        </div>
+                        <h2 className="text-xl font-bold">
+                            <span className="text-accent">ahmetky</span>
+                            <span className='text-white'>.dev</span>
+                        </h2>
+                    </a>
+                    <div className="flex gap-6">
+                        <a
+                            href="#"
+                            className="text-gray-400 hover:text-accent transition-colors"
+                        >
+                            <GithubIcon size={20} />
+                        </a>
+                        <a
+                            href="#"
+                            className="text-gray-400 hover:text-accent transition-colors"
+                        >
+                            <LinkedinIcon size={20} />
+                        </a>
+                        <a
+                            href="#"
+                            className="text-gray-400 hover:text-accent transition-colors"
+                        >
+                            <MailIcon size={20} />
+                        </a>
                     </div>
-                </section>
-
-                <section className="quick-links flex flex-col gap-8">
-                    <p>Quick Links</p>
-                    <ul className='flex flex-col gap-4'>
-                        {navLinks.map((link, index) => (
-                            <NavLink href={link.url} key={index}>{link.name}</NavLink>
-                        ))}
-                    </ul>
-                </section>
-
-                <section className="connect flex flex-col gap-8">
-                    <p>Connect</p>
-                    <Socials gap='gap-4' className='!text-white' />
-                </section>
+                </div>
+                <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-gray-800">
+                    <p className="text-gray-400 text-sm mb-4 md:mb-0">
+                        © {new Date().getFullYear()} Ahmet K. All rights reserved.
+                    </p>
+                    <nav className="flex gap-6">
+                        <a
+                            href="#home"
+                            className="text-sm text-gray-400 hover:text-accent transition-colors"
+                        >
+                            Home
+                        </a>
+                        <a
+                            href="#about"
+                            className="text-sm text-gray-400 hover:text-accent transition-colors"
+                        >
+                            About
+                        </a>
+                        <a
+                            href="#projects"
+                            className="text-sm text-gray-400 hover:text-accent transition-colors"
+                        >
+                            Projects
+                        </a>
+                        <a
+                            href="#skills"
+                            className="text-sm text-gray-400 hover:text-accent transition-colors"
+                        >
+                            Skills
+                        </a>
+                        <a
+                            href="#contact"
+                            className="text-sm text-gray-400 hover:text-accent transition-colors"
+                        >
+                            Contact
+                        </a>
+                    </nav>
+                </div>
             </div>
         </footer>
     )
