@@ -11,7 +11,8 @@ interface HeroProps {
 
 export default function Hero({ projectsRef }: HeroProps) {
   return (
-    <div className="flex items-center w-full justify-around max-w-6xl gap-8">
+    <div className="flex items-center w-full justify-around max-w-6xl gap-8 relative">
+      <div className="gradient absolute bottom-0 opacity-40 glow-dark"></div>
       <section className="main flex flex-col gap-8 max-w-4xl">
         <header className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
@@ -48,17 +49,45 @@ export default function Hero({ projectsRef }: HeroProps) {
       </section>
 
       <section>
-        <div className="flex-1 flex justify-center">
-          <div className="relative">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-yellow-400/20 to-purple-500/20 absolute blur-2xl"></div>
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-2 border-yellow-400/30 relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center text-6xl font-bold text-yellow-400/30">
-                <Image src={myImage} alt="profile-img" fill className="object-cover" />
-              </div>
-            </div>
+        <HeadShotSection />
+      </section>
+    </div>
+  );
+}
+
+function HeadShotSection() {
+
+  const baseOrbStyle = 'orb w-12 h-12 border border-accent/30 bg-primary text-accent font-bold absolute rounded-full flex items-center justify-center';
+
+  return (
+    <div className="flex-1 flex justify-center">
+      <div className="relative">
+        {/* Rotating orbs wrapper */}
+        <div className="absolute -inset-2 rotating-orb">
+          <div className={baseOrbStyle}>
+            JS
+          </div>
+          <div className={`${baseOrbStyle} right-0`}>
+            TS
+          </div>
+          <div className={`${baseOrbStyle} bottom-0`}>
+            CSS
+          </div>
+          <div className={`${baseOrbStyle} bottom-0 right-0`}>
+            PY
           </div>
         </div>
-      </section>
+
+        {/* Static profile image */}
+        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-2 border-yellow-400/30 overflow-hidden relative">
+          <Image
+            src={myImage}
+            alt="profile-img"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </div>
     </div>
   );
 }

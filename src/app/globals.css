@@ -94,4 +94,18 @@ h3 {
     box-shadow: 0 0 8px 2px #facc155e;
     @apply hover:border-accent/50 hover:-translate-y-1 transition-all;
   }
+
+  .rotating-orb {
+    animation: spinOrb 6s linear infinite;
+  }
+
+  @keyframes spinOrb {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
