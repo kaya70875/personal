@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function CollaborationCard() {
   return (
-    <div className='flex flex-col gap-4 w-full p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-200 dark:bg-[#0C1223]'>
+    <div className='flex flex-col gap-4 w-full p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-200 dark:bg-[#0C1223] outer-glow'>
       <h2>
         Lets Collaborate
       </h2>
