@@ -7,7 +7,7 @@ interface SectionBackgroundWrapperProps {
 
 export default function SectionBackgroundWrapper({ children, className }: SectionBackgroundWrapperProps) {
     return (
-        <div className={`${className} p-6`}>
+        <div className={`${className}`}>
             {children}
         </div>
     )
