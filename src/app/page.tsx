@@ -1,24 +1,17 @@
 "use client";
 
-import Button from "@/components/Button";
-
-import myImage from "../../public/images/headshot.png";
-import Image from "next/image";
-import { Typewriter } from "@/components/motion/Typewriter";
 import ContactInfoCard from "@/components/contact/ContactInfoCard";
-import Socials from "@/components/Socials";
 import SendMessageCard from "@/components/contact/SendMessageCard";
 import AnimatedSection from "@/components/motion/AnimatedSection";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { scrollToContact } from "@/utils/helpers";
 import ProjectSection from "@/components/sections/ProjectSection";
 import SkillCategoryCard from "@/components/SkillCategoryCard";
 import Header from "@/components/reusables/Header";
-import { ArrowDown, UserIcon } from "lucide-react";
 import AboutSection from "@/components/sections/AboutSection";
 import CollaborationCard from "@/components/contact/CollaborationCard";
+import Hero from "@/components/sections/Hero";
 
 export default function Home() {
   const router = useRouter();
@@ -40,48 +33,8 @@ export default function Home() {
 
   return (
     <main className="flex flex-col navbar-space text-text dark:text-dark-text">
-      <AnimatedSection className="hero flex flex-col gap-8 items-center justify-center text-center relative z-10">
-        <div className="glow-container glow-dark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-20" />
-        <header>
-          <Image src={myImage} alt="profile-img" width={164} height={164} />
-        </header>
-        <h1 className="max-w-2xl">
-          Hi, I am <span className="text-accent">Ahmet 👋</span>
-          <p>I build things for the web.</p>
-        </h1>
-        <Typewriter text="Full-Stack Developer | React | Next.js | FastAPI" />
-        <h3 className="max-w-3xl 2xl:max-w-4xl">
-          I build scalable web apps and write about Python & React.js
-        </h3>
-        <div className="flex items-center gap-8 justify-center w-full">
-          <Button
-            onClick={() =>
-              projectsRef.current?.scrollIntoView({
-                behavior: "smooth",
-                inline: "end",
-              })
-            }
-            className="w-36 sm:w-48 hover:opacity-80"
-          >
-            See Projects
-          </Button>
-          <Link href={"/blog"}>
-            <Button className="w-36 sm:w-48" variant="secondary">
-              Read Blog
-            </Button>
-          </Link>
-        </div>
-
-        <Socials className="w-full mt-4" />
-        <ArrowDown
-          className="animate-bounce cursor-pointer hover:text-accent duration-200 ease-in w-6 h-6"
-          onClick={() =>
-            projectsRef.current?.scrollIntoView({
-              behavior: "smooth",
-              inline: "end",
-            })
-          }
-        />
+      <AnimatedSection className="flex items-start justify-center w-full hero-height bg-gradient-to-b from-gray-900 via-gray-800 to-black">
+        <Hero projectsRef={projectsRef} />
       </AnimatedSection>
 
       <AnimatedSection className="about flex flex-col" highlight>
