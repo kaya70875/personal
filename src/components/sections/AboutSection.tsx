@@ -44,7 +44,7 @@ export default function AboutSection() {
 
 function AboutCard({ icon, title, desc }: AboutCard) {
     return (
-        <div className="bg-gray-200 dark:bg-[#0f172a] p-6 rounded-lg border border-gray-400 dark:border-gray-800 hover:border-accent transition-colors flex flex-col items-center md:items-start gap-3">
+        <div className="outer-glow bg-gray-200 dark:bg-[#0f172a] p-6 rounded-lg border border-gray-400 dark:border-gray-800 hover:border-accent/50 hover:-translate-y-1 transition-all flex flex-col items-center md:items-start gap-3">
             <div className="text-primary dark:text-yellow-400">
                 {icon}
             </div>
