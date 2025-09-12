@@ -16,13 +16,13 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
     const MDXContent = useMDXComponent(post.body.code)
 
     return (
-        <article className="prose dark:prose-invert prose-lg max-w-prose mx-auto navbar-space w-full p-4 md:p-0">
+        <article className="prose-invert prose-lg max-w-prose mx-auto navbar-space w-full p-4 md:p-0">
             <div className='w-full flex items-center justify-center flex-col'>
                 <Image src={post.thumbnail as string} alt={post.title} width={350} height={350} />
             </div>
             <header>
                 <h1>{post.title}</h1>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-400">
                     {format(parseISO(post.date), 'LLLL d, yyyy')}
                 </p>
                 <h4>{post.description}</h4>

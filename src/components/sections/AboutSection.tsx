@@ -29,7 +29,7 @@ export default function AboutSection() {
 
     return (
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-24 w-full">
-            <section className="about-desc text-text dark:text-white font-light max-w-xl">
+            <section className="about-desc text-white font-light max-w-xl">
                 <AboutDescription />
             </section>
 
@@ -44,12 +44,12 @@ export default function AboutSection() {
 
 function AboutCard({ icon, title, desc }: AboutCard) {
     return (
-        <div className="outer-glow bg-gray-200 dark:bg-[#0f172a] p-6 rounded-lg border border-gray-400 dark:border-gray-800 flex flex-col items-center md:items-start gap-3">
-            <div className="text-primary dark:text-yellow-400">
+        <div className="outer-glow bg-[#0f172a] p-6 rounded-lg border border-gray-800 flex flex-col items-center md:items-start gap-3">
+            <div className="text-yellow-400">
                 {icon}
             </div>
             <header className="text-xl font-semibold">{title}</header>
-            <p className="text-primary dark:text-gray-300">
+            <p className="text-gray-300">
                 {desc}
             </p>
         </div>
@@ -58,7 +58,7 @@ function AboutCard({ icon, title, desc }: AboutCard) {
 
 function AboutDescription() {
     return (
-        <section className="about-desc text-text dark:text-white opacity-80 font-light max-w-xl leading-7 space-y-4">
+        <section className="about-desc text-white opacity-80 font-light max-w-xl leading-7 space-y-4">
             <p>
                 I’m Ahmet, a <span className="font-medium">Full Stack Developer </span>
                 passionate about building tools that make learning and productivity more accessible.
