@@ -1,6 +1,5 @@
 import React from 'react'
 import AnimatedSection from '../motion/AnimatedSection'
-import AnimatedBorderCard from '../motion/AnimatedBorderCard'
 import ProjectCard from '../ProjectCard'
 import ImageModal from '../modals/ImageModal'
 import articlewImg from "../../../public/images/articlew.png";
