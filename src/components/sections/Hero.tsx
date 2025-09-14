@@ -12,7 +12,7 @@ interface HeroProps {
 export default function Hero({ projectsRef }: HeroProps) {
   return (
     <div className="flex flex-col-reverse md:flex-row items-center w-full justify-center md:justify-around max-w-6xl gap-8 relative p-4 xl:p-0">
-      <div className="gradient absolute bottom-0 opacity-40 glow-dark"></div>
+      <div className="gradient absolute hidden md:block bottom-0 opacity-40 glow-dark"></div>
       <section className="main flex flex-col gap-8 max-w-4xl">
         <header className="flex flex-col gap-4 items-center md:items-start">
           <div className="flex flex-col gap-2 items-center md:items-start">
@@ -43,7 +43,7 @@ export default function Hero({ projectsRef }: HeroProps) {
             <Button variant="secondary">Read Blog</Button>
           </Link>
         </div>
-        <div className="w-full flex items-start justify-center md:justify-start opacity-60">
+        <div className="w-full flex items-start justify-center md:justify-start opacity-70">
           <Socials gap="gap-4" />
         </div>
       </section>
