@@ -12,7 +12,7 @@ export default function Socials({ className = '', gap = 'gap-8' }: SocialsProps)
     const linkStyle = 'transition-all duration-200 ease-in hover:text-accent transition-all duration-200 ease-in hover:text-accent';
 
     return (
-        <div className={`socials text-text dark:text-dark-text flex items-center justify-center ${className} ${gap}`}>
+        <div className={`socials text-dark-text flex items-center justify-center ${className} ${gap}`}>
             <Link href={'https://github.com/kaya70875'} target="__blank" className={linkStyle}>
                 <Github />
             </Link>

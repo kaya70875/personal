@@ -74,7 +74,7 @@ h3 {
   }
 
   .card-border {
-    @apply border border-gray-300 dark:border-gray-700;
+    @apply border border-gray-700;
   }
 
   .glow-dark {

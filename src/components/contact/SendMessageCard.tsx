@@ -38,10 +38,10 @@ export default function SendMessageCard() {
         toast.success('Message sended successfully.');
     }
 
-    const inputStyles = 'bg-gray-300 dark:bg-primary hover:border-gray-300 focus:border-accent transition-all duration-100 ease-in outline-none';
+    const inputStyles = 'bg-primary hover:border-gray-300 focus:border-accent transition-all duration-100 ease-in outline-none';
 
     return (
-        <form onSubmit={handleSubmit} className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full card-border bg-gray-200 dark:bg-[#0C1223] outer-glow'>
+        <form onSubmit={handleSubmit} className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full card-border bg-[#0C1223] outer-glow'>
             {/* Initialize Toaster */}
             <Toaster />
 
@@ -56,7 +56,7 @@ export default function SendMessageCard() {
                 <textarea name="message" onChange={(e) => setForm({ ...form, message: e.target.value })} id="msg" placeholder='Write your message' className={`card-border p-4 rounded-lg w-full min-h-48 ${inputStyles}`} />
             </div>
 
-            <button disabled={loading} type='submit' className='bg-text dark:bg-dark-text disabled:opacity-70 text-white dark:text-primary p-3 w-48 rounded-lg font-medium flex items-center justify-center gap-2 cursor-pointer hover:opacity-80 transition-all ease-in duration-200'>
+            <button disabled={loading} type='submit' className='bg-dark-text disabled:opacity-70 text-primary p-3 w-48 rounded-lg font-medium flex items-center justify-center gap-2 cursor-pointer hover:opacity-80 transition-all ease-in duration-200'>
                 <p>Send Message</p>
             </button>
         </form>

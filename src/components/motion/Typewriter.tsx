@@ -24,7 +24,7 @@ export const Typewriter = ({ text, ...rest }: TypewriterProps) => (
         {...rest}
     >
         {text.split("").map((char, i) => (
-            <motion.span className="text-text dark:text-dark-text" key={`${char}-${i}`} variants={letterVariants}>
+            <motion.span className="text-dark-text" key={`${char}-${i}`} variants={letterVariants}>
                 {char}
             </motion.span>
         ))}

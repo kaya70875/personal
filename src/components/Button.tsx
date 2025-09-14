@@ -13,7 +13,7 @@ export default function Button({ variant = 'primary', children, onClick, classNa
 
     const variants = {
         primary: 'bg-accent text-text hover:opacity-80',
-        secondary: 'border border-gray-600 text-primary dark:text-white rounded-md transition-all hover:bg-white/10 hover:border-gray-400',
+        secondary: 'border border-gray-600 text-white rounded-md transition-all hover:bg-white/10 hover:border-gray-400',
     }
 
     return (

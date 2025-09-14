@@ -8,17 +8,17 @@ export default function ContactInfoCard() {
         {
             name: 'Email',
             value: 'kaya70875@gmail.com',
-            icon: <Mail size={24} className='text-text dark:text-dark-text' />
+            icon: <Mail size={24} className='text-dark-text' />
         },
         {
             name: 'Location',
             value: 'Istanbul, Turkey',
-            icon: <MapPin size={24} className='text-text dark:text-dark-text' />
+            icon: <MapPin size={24} className='text-dark-text' />
         }
     ] as const;
 
     return (
-        <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full card-border bg-gray-200 dark:bg-[#0C1223] outer-glow'>
+        <div className='flex flex-col items-start gap-4 p-6 rounded-lg shadow-lg w-full card-border bg-[#0C1223] outer-glow'>
             <h2>Contact Information</h2>
             {contactInfo.map((info, index) => (
                 <div key={index} className="info flex items-center gap-4">

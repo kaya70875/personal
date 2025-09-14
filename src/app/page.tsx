@@ -32,7 +32,7 @@ export default function Home() {
   }, [router, searchParams]);
 
   return (
-    <main className="flex flex-col navbar-space text-text dark:text-dark-text">
+    <main className="flex flex-col navbar-space text-dark-text">
       <AnimatedSection className="flex items-start justify-center w-full hero-height bg-gradient-to-b from-gray-900 via-gray-800 to-black">
         <Hero projectsRef={projectsRef} />
       </AnimatedSection>
