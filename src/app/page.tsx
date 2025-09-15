@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col navbar-space text-dark-text">
-      <AnimatedSection className="flex items-start justify-center w-full hero-height bg-gradient-to-b from-gray-900 via-gray-800 to-black">
+      <AnimatedSection className="flex items-start justify-center w-full h-full md:h-[calc(100vh-86px)] bg-gradient-to-b from-gray-900 via-gray-800 to-black">
         <Hero projectsRef={projectsRef} />
       </AnimatedSection>
 

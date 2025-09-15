@@ -11,14 +11,14 @@ interface HeroProps {
 
 export default function Hero({ projectsRef }: HeroProps) {
   return (
-    <div className="flex flex-col-reverse md:flex-row items-center w-full justify-center md:justify-around max-w-6xl gap-8 relative p-4 xl:p-0">
+    <div className="flex flex-col-reverse md:flex-row items-center w-full justify-center md:justify-around max-w-6xl gap-8 relative">
       <div className="gradient absolute hidden md:block bottom-0 opacity-40 glow-dark"></div>
       <section className="main flex flex-col gap-8 max-w-4xl">
         <header className="flex flex-col gap-4 items-center md:items-start">
           <div className="flex flex-col gap-2 items-center md:items-start">
             <span className="text-accent font-medium">Hello, I'm</span>
-            <span className="font-extrabold text-white text-7xl">Ahmet</span>
-            <span className="mb-2 font-light text-4xl opacity-80">
+            <span className="font-extrabold text-white text-5xl md:text-7xl">Ahmet</span>
+            <span className="mb-2 font-light text-3xl md:text-4xl opacity-80 text-center md:text-start">
               Full Stack Developer
             </span>
           </div>
