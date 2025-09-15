@@ -59,7 +59,7 @@ function HeadShotSection() {
   return (
     <div className="flex-1 flex justify-center">
       <div className="relative">
-        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-2 border-yellow-400/30 overflow-hidden relative">
+        <div className="w-48 h-48 md:w-80 md:h-80 rounded-full border-2 border-yellow-400/30 overflow-hidden relative">
           <Image
             src={myImage}
             alt="profile-img"
